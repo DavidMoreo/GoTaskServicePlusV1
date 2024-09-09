@@ -1,0 +1,55 @@
+@if(GetModeVisible()){
+<div class="container-city-filter">
+
+  <div class="filter-item">
+    <div>
+      <p class="title">En que ciudades quiere buscar los productos</p>
+      <div>
+        <div class="input-filter">
+          <div class="container-filter">
+            @if(GetModeCity()){
+            <input placeholder="Escribir" (keyup)="ChangedFilterInput($event)" />
+            <div class="list-select-city">
+              @for (filter of GetListFilter(); track filter.id) {
+              <div (click)="Remove(filter.id)" class="item-city">{{filter.value}}</div>
+              }
+            </div>
+            }
+
+            @if(GetFIlter().length>0){
+            <div class="list-filter">
+              @for (filter of GetFIlter(); track filter.id) {
+              <div class="btn-list-item" (click)="AddCityFilter(filter)">
+                <p>{{filter.name}}</p>
+                <button>
+                  @if(ExisteCity(filter.id)){
+                  ✔
+                  }
+                </button>
+              </div>
+              }
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    @if(GetModeLogin()){
+    <div class="btn-action">
+      <button (click)="SetRoute('login')"  >Inicia sesión </button>
+      <button (click)="SetIdUser()">Continuar anonimo </button>
+      <button  (click)="SetRoute('register-user')" >Crear usuario</button>
+    </div>
+    }@else{
+    <div class="btn-action">      
+      <button  (click)="CloseModeVisible()" >Salir</button>
+    </div>
+    }
+
+  </div>
+
+
+
+
+</div>
+}

@@ -1,0 +1,131 @@
+
+<div class="scroll " id="scrollSelect">
+  @if(_product!=undefined){
+  <div class="container-item   ">
+
+    <div class="container-img-zoom">
+      <div class="container-img ">
+        <div class="container"
+             (mousedown)="onDragStart($event)"
+             (touchstart)="onDragStart($event)"
+             (mousemove)="onDrag($event)"
+             (touchmove)="onDrag($event)"
+             (mouseup)="onDragEnd()"
+             (touchend)="onDragEnd()"
+             (mouseleave)="onDragEnd()">
+          <img class="img-not-zoom" src="{{ GetUrlImgSelect(_product.firsImg)}}" [ngStyle]="{ 'transform': ' scale('+zoomOrigin+' ) translate(' + positionX + 'px, ' + positionY + 'px)'  }" />
+        </div>
+      </div>
+      <div class="container-min-img">
+        @if(this._product!=undefined){
+        @for( img of this._product.imgList; track img.id){
+        <img src="{{GetUrlImg(img)}}" (click)="SelectionImg(img)" />
+        }
+        }
+      </div>
+      <div class="zoom-container">
+        <button (click)="Zoon(true)"><i class="bi bi-zoom-in"></i></button>
+        <button (click)="Zoon(false)"><i class="bi bi-zoom-out"></i></button>
+      </div>
+    </div>
+
+
+    <div class="container-description-scroll">
+      <div class="container-description">
+        <!--<br />-->
+        @if(IsService(_product)){
+        <p class="price">
+          Precio: {{_product.priceString}}
+        </p>
+        }
+        <div class="price-name">
+          <p class="title">
+            {{_product.name}}
+          </p>
+        </div>
+
+        <div class="mode">
+          @if(IsService(_product)){
+          @if( IsBuyCart()){
+          <button (click)="CartRemove()" class="btn-shopping-cart">Añadir al carrito <i class="bi bi-cart-plus"></i></button>
+          }@else{
+          <button (click)="CartBuyAdd()" class="btn-shopping-cart-off">Añadir al carrito <i class="bi bi-cart-plus"></i></button>
+          }
+          <button (click)="CartProduct()" class="btn-buy">Ir a tienda <i class="bi bi-bag-fill"></i></button>
+          }
+
+          @if(GetMap(_product)!=''){
+          <a href="https://www.google.com/maps/search/{{GetMap(_product)}}?sa=X" target="_blank">
+            <button class="btn-buy">Ir a ubicación <i class="bi bi-geo-alt-fill"></i></button>
+          </a>          
+          }
+          <!--<button class="btn-favorites"><i class="bi bi-heart"></i> 100 </button>-->
+        </div>
+
+        <!--<iframe #map
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16258056.993716383!2d-85.0204817738346!3d5.820014025150471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e15a43aae1594a3%3A0x9a0d9a04eff2a340!2sColombia!5e0!3m2!1ses!2sco!4v1719856882023!5m2!1ses!2sco"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+
+        @if(this._product!=undefined){
+        <app-common-mapa [coordinaesProyectLat]="this.GetMap(this._product, 'Lat')" [coordinaesProyectLng]="this.GetMap(this._product, 'Lng')"></app-common-mapa>
+        }
+
+
+
+        <!--<div  class="menu" >
+          <div class="menu-item">
+          <button  class="share" ><i class="bi bi-share"></i></button>
+          </div>
+        </div>-->
+
+
+        <div class="description-scroll">
+          @for( item of this._product.characteristics; track item.id){
+          @if(item.description!="" && item.description!=null){
+          <p>
+            <b>{{item.name}}</b>
+            @for( text of item.description.split('\n'); track text){
+            @if(text!="" ){
+            <br />
+            ✔ <b class="justify text-detail"> {{text}}</b>
+            }
+            }
+            <br />
+          </p>
+          <div class="liner"></div>
+          }
+          }
+
+          @if(_product.deliveryMode.name!=""){
+          <p>
+            <b>{{languageTraslate("MODO DE ENTREGA")}}</b>
+            <br />
+            {{languageTraslate(_product.deliveryMode.name)}}
+            <br />
+
+          </p>
+          }
+          @if(_product.deliveryMode.name!=""){
+          <p>
+            <b>{{languageTraslate("TIEMPO DE ENTREGA")}}</b>
+            <br />
+            {{languageTraslate(_product.availableDay.name)}}
+            <br />
+
+          </p>
+          }
+        </div>
+
+      </div>
+    </div>
+  </div>
+  }@else{
+  <app-common-loading [active]="true"></app-common-loading>
+  }
+
+</div>

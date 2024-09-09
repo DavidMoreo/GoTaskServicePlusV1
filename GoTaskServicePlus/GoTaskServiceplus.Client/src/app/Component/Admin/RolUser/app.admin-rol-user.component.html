@@ -1,0 +1,227 @@
+
+<app-permission>
+  <div class="containe-concept">
+
+
+
+
+    <div class="concept-item">
+
+      <!--<h1 class="title  margin-top">Pais - Ciudad</h1>-->
+
+      <div class="container-input">
+        <p class="text-form">
+          {{languageTraslate("Nombre rol")}}
+          <input #name type="text" name="name" class="uppercase" (change)="changedInputName($event)" [(ngModel)]="_Rol.rol.name"  />
+          {{languageTraslate("Codigo")}}
+          <input type="text" name="code" class="uppercase" [(ngModel)]="_Rol.rol.code" />
+        </p>
+      </div>
+
+      <p class="text-form">
+        {{languageTraslate("Paginas")}}
+        <select (change)="onSelectChangePage($event)" name="Pages">
+          @if(_Rol.rol.id=="00000000-0000-0000-0000-000000000000"){
+          <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+          }@else{
+          <option value="0" selected> {{_Rol.rol.permissionByRoll.page}}</option>
+          }
+          @for( item of _Rol.listPages; track item.page){
+          <option value="{{item.page}}">{{item.name}}</option>
+          }
+        </select>
+      </p>
+
+      <div class="permission-mode">
+
+        <p class="text-form">
+          {{languageTraslate("Comprador")}}
+          <button class="btn1 ico">
+            @if(_Rol.rol.isCustomer){
+            <i class=" ico bi bi-toggle-on" (click)="ChangedRolType('isCustomer')"></i>
+            }
+            @else{
+            <i class=" bi bi-toggle-off" (click)="ChangedRolType('isCustomer')"></i>
+            }
+          </button>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Vendedor")}}
+          <button class="btn1 ico">
+            @if(_Rol.rol.isVendor){
+            <i class=" ico bi bi-toggle-on" (click)="ChangedRolType('isVendor')"></i>
+            }
+            @else{
+            <i class=" bi bi-toggle-off" (click)="ChangedRolType('isVendor')"></i>
+            }
+          </button>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Fabricante")}}
+          <button class="btn1 ico">
+            @if(_Rol.rol.isMaker){
+            <i class=" ico bi bi-toggle-on" (click)="ChangedRolType('isMaker')"></i>
+            }
+            @else{
+            <i class=" bi bi-toggle-off" (click)="ChangedRolType('isMaker')"></i>
+            }
+          </button>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Administrador")}}
+          <button class="btn1 ico">
+            @if(_Rol.rol.isAdmin){
+            <i class=" ico bi bi-toggle-on" (click)="ChangedRolType('isAdmin')"></i>
+            }
+            @else{
+            <i class=" bi bi-toggle-off" (click)="ChangedRolType('isAdmin')"></i>
+            }
+          </button>
+        </p>
+
+
+      </div>
+
+      <div class="permission-mode">
+
+        <p class="text-form">
+          {{languageTraslate("Guardar")}}
+          <button class="btn1 ico">
+            @if(_Rol.rol.permissionByRoll.save){
+            <i class=" ico bi bi-toggle-on" (click)="ChangedIsPermission('save',false)"></i>
+            }
+            @else{
+            <i class=" bi bi-toggle-off" (click)="ChangedIsPermission('save',true)"></i>
+            }
+          </button>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Eliminar")}}
+          <button class="ico btn1">
+            @if(_Rol.rol.permissionByRoll.delete){
+            <i class="  bi bi-toggle-on" (click)="ChangedIsPermission('delete',false)"></i>
+            }
+            @else{
+            <i class=" bi bi-toggle-off" (click)="ChangedIsPermission('delete',true)"></i>
+            }
+          </button>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Leer")}}
+          <button class="ico btn1">
+
+            @if(_Rol.rol.permissionByRoll.read){
+            <i class="  bi bi-toggle-on" (click)="ChangedIsPermission('read',false)"></i>
+            }
+            @else{
+            <i class="  bi bi-toggle-off" (click)="ChangedIsPermission('read',true)"></i>
+            }
+          </button>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Compartir")}}
+          <button class="ico btn1">
+            @if(_Rol.rol.permissionByRoll.share){
+            <i class="  bi bi-toggle-on" (click)="ChangedIsPermission('share',false)"></i>
+            }
+            @else{
+            <i class="  bi bi-toggle-off" (click)="ChangedIsPermission('share',true)"></i>
+            }
+          </button>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Publico")}}
+          <button class="ico btn1">
+            @if(_Rol.rol.isPublic){
+            <i class="  bi bi-toggle-on" (click)="ChangedIsPublic(false)"></i>
+            }
+            @if(!_Rol.rol.isPublic){
+            <i class=" bi bi-toggle-off" (click)="ChangedIsPublic(true)"></i>
+            }
+          </button>
+        </p>
+
+      
+      </div>
+    </div>
+
+    <div class="btn-scroll">
+      @if(true){    
+      <button (click)="Saved()"><i class="bi bi-floppy2-fill"></i></button>
+      }
+    </div>
+  </div>
+
+
+  <app-common-custom-grid columns="5">
+    @if(this._Rol.listRolUser!=undefined){
+
+    @for( item of this._Rol.listRolUser; track item.name){
+
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+      {{item.name}}
+      @if(_rowSeletion==item.id){
+      <div class="edit-visible">
+        <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+        <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+      </div>
+      }
+    </div>
+
+
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+      {{item.permissionByRoll.page}}
+      @if(_rowSeletion==item.id){
+      <div class="edit-visible">
+        <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+        <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+      </div>
+      }
+    </div>
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+      {{Getpermission(item)}}
+      @if(_rowSeletion==item.id){
+      <div class="edit-visible">
+        <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+        <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+      </div>
+      }
+
+    </div>
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+      {{IsPublic(item)}}
+      @if(_rowSeletion==item.id){
+      <div class="edit-visible">
+        <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+        <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+      </div>
+      }
+
+    </div>
+
+
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+      {{GetTypeRol(item)}}
+      @if(_rowSeletion==item.id){
+      <div class="edit-visible">
+        <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+        <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+      </div>
+      }
+    </div>
+    }
+
+    }
+
+  </app-common-custom-grid>
+
+ 
+
+</app-permission>

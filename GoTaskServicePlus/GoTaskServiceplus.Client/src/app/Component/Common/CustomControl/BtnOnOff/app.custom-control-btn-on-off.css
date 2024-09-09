@@ -1,0 +1,54 @@
+.btn {
+  height: 28px;
+  width: 50px;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+  border: none;
+  box-shadow: 0px 0px 4px black inset;
+  border: 1px solid #f6f6f6;
+  position:relative;
+}
+
+  .btn i {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+   
+  }
+
+.btn-action {
+  box-shadow: 0px 0px 4px black;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: central;
+  width: 20px;
+  position: absolute;
+  height: 20px;
+}
+
+.on {
+  background-color: forestgreen;
+  color: white; 
+  right: 0px;
+
+  border-radius: 0px 5px 5px 0px;
+}
+
+
+
+.off {
+  background-color: grey;
+  color: white;
+  left: 0px;
+  border-radius:5px 0px 0px 5px;
+}
+

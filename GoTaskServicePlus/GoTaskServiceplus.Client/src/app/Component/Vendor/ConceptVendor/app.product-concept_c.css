@@ -1,0 +1,134 @@
+.containe-concept
+{
+    /*padding-top:70px;*/
+}
+
+.scroll-menu{
+width:100vw;
+overflow:hidden;
+
+}
+
+
+
+.containe-concept-menu {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  row-gap: 5px;
+  column-gap: 5px;
+  background-color: black;
+  width:100%;
+  overflow:auto;
+}
+
+
+  .containe-concept-menu .tab-item {
+    min-width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+   
+  }
+
+.active {
+  border: 1px solid white;
+  box-shadow: -1px 1px 2px 0px white, inset 0px 0px 8px white;
+}
+
+.disable {
+  border: none;
+  box-shadow: 0px 0px 2px 0px white;
+}
+
+
+
+  .btn-scroll {
+    display: flex;
+    justify-content: end;
+    column-gap: 10px;
+    align-items: center;
+    background-color: orangered;
+    box-shadow: 0px 0px 5px black;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .btn-scroll button {
+    border-radius: 5px;
+    background-color: black;
+    box-shadow: 0px 0px 5px black, inset 0px 0px 5px white;
+    color: white;
+    padding: 2px;
+    height: 45px;
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+    .btn-scroll button i {
+      font-size: 25px;
+    }
+
+
+.scroll{
+display:flex;
+width:99%;
+padding:5px;
+background-color:aqua;
+height:200px;
+overflow:hidden;
+justify-content:start;
+}
+
+
+.container-concep {
+  display: grid;
+  row-gap: 1px;
+  grid-template-columns: repeat(3,1fr);
+  background-color: red;
+  grid-template-rows: min-content;
+  width: 100%;
+  align-content:start;
+  overflow-y:auto;
+
+}
+
+.div-header{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+
+
+    background-color:black;
+    border:1px solid  white;
+    height:30px;
+    color:white;
+}
+
+
+.div-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  border: 1px solid white;
+  height: 30px;
+  color: white;
+  position:relative;
+}
+
+.row-select{
+    background-color:green;
+}
+.edit-visible {
+    top:5px;
+    right:0px;
+  position: absolute;
+ 
+}
+

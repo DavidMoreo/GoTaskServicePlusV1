@@ -1,0 +1,37 @@
+<app-permission page="app-vendor-active-product">
+
+
+  <div class="conatiner-product">
+    @for( item of GetPrduct(); track item.name){
+    <div class="product">
+      <div class="div-img">
+        <img class="ico" [src]="GetUrl(item.firsImg)" loading="lazy" />
+      </div>
+      <div class="div-item">
+        {{item.name}}
+      </div>
+      @if(!GetLoading()){
+      <div class="div-btn" (click)="Edit(item.id)">
+        @if(item.isPublic){
+        <div class="on">
+          <div class="btn">ON</div>
+        </div>
+        }
+        @else{
+        <div class="off">
+          <div class="btn">OFF</div>
+        </div>
+        }
+      </div>
+      }@else{
+      <app-common-loading-partial></app-common-loading-partial>
+      }
+    </div>
+    }
+  </div>
+
+
+  <div class="margin-top"></div>
+  <app-common-loading [active]="GetListNull()"></app-common-loading>
+
+</app-permission>

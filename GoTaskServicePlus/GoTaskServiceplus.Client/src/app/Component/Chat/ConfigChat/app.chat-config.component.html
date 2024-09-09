@@ -1,0 +1,38 @@
+<app-permission>
+  <div class="scroll-menu">
+    <div class="containe-concept-menu">
+      <button class="tab-item"
+              [ngClass]="{'active':_tab==intentionOfTheQquestion(),'disable':_tab!=intentionOfTheQquestion()}"
+              (click)="pageTab(intentionOfTheQquestion())">
+        {{ languageTraslate("Intención")}}
+      </button>
+      <button class="tab-item"
+              [ngClass]="{'active':_tab==searchProductsByName(),'disable':_tab!=searchProductsByName()}"
+              (click)="pageTab(searchProductsByName())">
+        {{ languageTraslate("Buscar productos por nombres")}}
+      </button>
+      <button class="tab-item"
+              [ngClass]="{'active':_tab==aIAssistant(),'disable':_tab!=aIAssistant()}"
+              (click)="pageTab(aIAssistant())">
+        {{ languageTraslate("Asistente de IA")}}
+      </button>
+    </div>
+  </div>
+
+
+  @if(_tab==intentionOfTheQquestion())
+  {
+  <app-chat-intent-config></app-chat-intent-config>
+  }
+
+  @if(_tab==searchProductsByName())
+  {
+  <app-chat-by-name-config></app-chat-by-name-config>
+  }
+
+  @if(_tab==aIAssistant())
+  {
+  <app-chat-assistant-config></app-chat-assistant-config>
+  }
+
+</app-permission>

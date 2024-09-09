@@ -1,0 +1,117 @@
+
+
+<app-common-loading [active]="(GetListNull() && GetListNullIA())"></app-common-loading>
+
+<app-common-scroll-category
+                            (Filter)="FilterCategory($event)"
+                            [Id]="GetTypeCategory()"
+                            ></app-common-scroll-category>
+
+<!--<h1 class="title margin-top ">Productos</h1>-->
+<div class="menu-search">
+  @if(!menuVidible){
+  <div class="btn-menu-on" (click)="MenuVisible(true)">
+    @if(_search.listBotAvailable && _search._listProductIA.length >0){
+    <p class="alert-ia">
+      Resultados por IA <b> {{this._search._listProductIA.length }}</b>
+    </p>
+    }
+    <button (click)="MenuVisible(true)"><i class="bi bi-funnel-fill"></i></button>
+  </div>
+  }@else{
+  <div @menu class="menu">
+    <button class="btn-menu-off" (click)="MenuVisible(false)"><i class="bi bi-x-circle-fill"></i></button>
+    <div class="item-filter-active">
+      <b class="sub-title-filter-green">Ver busqueda con IA</b>
+      <button class="btn1">
+        @if(_loading._loadingPartial){
+        @if(this._search.isBotActive){
+        <i class="bi bi-toggle-on" (click)="SetIsBot(false)"></i>
+        }
+        @if(!this._search.isBotActive){
+        <i class="bi bi-toggle-off" (click)="SetIsBot(true)"></i>
+        }
+        }
+        @if(!_loading._loadingPartial){
+        <app-common-loading-partial></app-common-loading-partial>
+        }
+      </button>
+    </div>
+
+    <div class="item-filter-active">
+      <b class="sub-title-filter-green">Mostrar distancia de producto</b>
+      <button class="btn1">
+        @if(_Gps.GetGpsActive()){
+        <i class="bi bi-toggle-on" (click)="this._Gps.DeleteCordinates()"></i>
+        }
+        @if(!_Gps.GetGpsActive()){
+        <i class="bi bi-toggle-off" (click)="this._Gps.GetCoordinatesAuto()"></i>
+        }
+      </button>
+    </div>
+
+    <div class="item-filter-active">
+      <b class="sub-title-filter-green">Filtrar por ciudad</b>
+      <button class="btn1">
+        @if(GetStatusFilterCity()){
+        <i class="bi bi-toggle-on" (click)="ActionVisibleCityFilter(true)"></i>
+        }
+        @if(!GetStatusFilterCity()){
+        <i class="bi bi-toggle-off" (click)="ActionVisibleCityFilter(true)"></i>
+        }
+      </button>
+    </div>
+
+
+  </div>
+  }
+
+
+
+
+  <div class="scroll">
+
+    <div class="product-container" (scroll)="onScroll($event)">
+      @if(this._search.isBotActive){
+      @if(_loading._loadingPartial){
+      <p class="title-filter">Resultados generados por inteligencia artificial</p>
+      @for (item of _search._listProductIA ; track item.id) {
+      <app-item-product [product]="item" [distance]="GetDistanceProduct(item.adress)"></app-item-product>
+      }
+      }
+
+      @if((_search._listProductIA==undefined || _search._listProductIA.length <=0) && this._search._statustIA){
+      <p class="alert-filter">Sin productos disponibles</p>
+      }
+      }
+
+      @if(_search._listProduct !=undefined && _search._listProduct != null){
+      @for (item of _search._listProduct ; track item.id) {
+      <app-item-row-product [product]="item" [distance]="GetDistanceProduct(item.adress)"></app-item-row-product>
+      <app-item-product [product]="item" [distance]="GetDistanceProduct(item.adress)"></app-item-product>
+      }
+      }
+      @if((_search._listProduct==undefined || _search._listProduct.length <=0 ) && this._search._statust){
+      <div class="div-alert-filter">
+        <p class="alert-filter">Productos no disponibles. Puedes activar el filtro 'Ver búsqueda con IA' en tu lado izquierdo para obtener más alternativas.</p>
+      </div>
+      }
+
+
+
+      @if( !this._search.loadingPageGo ){
+      <div class=" end  width" (click)="PageGo()">
+        <i class="bi bi-shop-window"></i> Más productos
+      </div>
+      }
+
+    </div>
+  </div>
+
+</div>
+<app-alert-buy-product></app-alert-buy-product>
+<app-menu-phone></app-menu-phone>
+ @if(this._search.loadingPageGo ){
+<app-common-loading [active]="true"></app-common-loading>
+ }
+

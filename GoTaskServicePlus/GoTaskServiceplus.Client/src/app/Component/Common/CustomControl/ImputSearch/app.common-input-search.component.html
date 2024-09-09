@@ -1,0 +1,28 @@
+
+<div class="input-filter">
+  <div class="container-filter">
+    <input placeholder="Escribir" (keyup)="ChangedFilterInput($event)" />
+    @if(this._InputSearch.listFilterUpdate){
+    <div class="list-filter">
+      <div class="btn-list-close">
+        <button class="delete">x</button>
+      </div>
+      @for (filter of this._InputSearch.listFilterUpdate; track filter.id) {
+      <div class="btn-list-item">
+        <p>{{filter.name}}</p>
+        <button>
+          @if(false){
+          ✔
+          }@else{
+          x
+          }
+        </button>
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>
+
+
+

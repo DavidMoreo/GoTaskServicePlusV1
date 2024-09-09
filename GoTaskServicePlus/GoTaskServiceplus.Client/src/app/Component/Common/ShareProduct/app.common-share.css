@@ -1,0 +1,147 @@
+.contaioner-share {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #979797;
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+
+.item-share {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /*padding: 2px;*/
+  width: 300px;
+  height: 350px;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 5px;
+  /*box-shadow: 0px 0px 5px black;*/
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+
+#img-share {
+  width: auto;
+  object-fit: contain;
+  height: 200px;
+  min-height: 183px;
+  margin-top: 50px;
+}
+
+.detail {
+  background-color: orangered;
+/*  border-radius: 10px 30px 0px 0px;*/
+  padding: 8px;
+  color: white;
+  /* gap: 10px; */
+  display: flex;
+  flex-direction: column;
+/*  box-shadow: 0px 0px 5px black;*/
+  min-width: 100%;
+  overflow: hidden;
+  height: auto;
+  justify-content: inherit;
+  padding-bottom:-0px;
+}
+
+.title-name {
+  margin: 5px;
+  font-size: 18px;
+  max-width: 100%;
+  max-height:50px;
+  padding-left: 5px;
+}
+
+
+.title-price {
+  background-color: green;
+  padding-left: 5px;
+  border-radius: 5px 5px 0px 0px;
+  /*  box-shadow: 0px 0px 5px black,inset 0px -2px 5px white;*/
+  font-size: 19px;
+  width: 299px
+}
+
+.float-company {
+  height: 50px;
+  margin-bottom: -100px;
+  width: 100%;
+   padding: 0px; 
+   display: flex;
+   position:absolute;
+   top:0px;
+   left:0px;
+   justify-content:center;
+   align-items:center;
+}
+
+.title-company {
+  background-color: #ff4500;
+  width: 100%;
+  padding: 5px;
+  color: white;
+  /* border-radius: 5px 5px 5px 5px; */
+  text-align: end;
+/*  box-shadow: 0px 0px 5px -1px black;*/
+}
+
+
+.btn-menu {
+  background: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  width: 70px;
+  height: 40px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ /* box-shadow: 0px 0px 5px black, inset 0px 0px 4px white;*/
+  border: 1px solid white;
+  z-index:2;
+}
+
+.menu-float {
+  position: absolute;
+  right: 5px;
+  bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+
+.img-share-company {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  left: 0px;
+  top: 0px;
+  border-radius: 0px 0px 10px;
+  z-index: 2;
+}
+
+
+.img-share-company-gift {
+  position: absolute;
+  width: 110px;
+  height: 100px;
+  top: -5px;
+  left: -10px;
+  z-index: 12;
+}

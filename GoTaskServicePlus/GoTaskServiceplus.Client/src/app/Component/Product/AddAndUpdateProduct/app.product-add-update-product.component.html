@@ -1,0 +1,339 @@
+<app-permission page="add-product">
+
+
+
+  <div class="container-add-product scroll-product">
+    <div class="item-product-container">
+      <!--<app-item-product-add></app-item-product-add>-->
+      <div class="first-Img">
+        <img style="height: 100%; width: auto;" [src]="GetFirsImage()"  />
+      </div>
+      @if( GetLisImage()!=undefined  &&  GetLisImage().length>0)
+      {
+      <div class="container-min-img">
+        @for( img of GetLisImage(); track img.id){
+        <div class="item-img-div">
+          <button (click)="DeleteImg(img,_product.id )" class="delete">
+            <i class="bi bi-trash3-fill"></i>
+          </button>
+          <img class="img-min" src="{{GetUrl(img)}}" [alt]="img.name" [title]="img.name" (click)="changedImgSelect(img)" />
+        </div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="container-input-general">
+      <div class="container-input">
+        <p class="text-form">
+          {{languageTraslate("Nombre")}}
+          <app-common-input-text [value]="_product.name"
+                                 (EventSelect)="changedInputName($event)"
+                                 [isRequired]="true"
+                                 [nameId]="'add_name_product'"
+                                 [listAllData]="GetListReferProduct()"
+                                 [isSelect]="true"
+                                 [enableFilter]="true"
+                                 textTransfor="'uppercase'"></app-common-input-text>
+        </p>  
+
+
+        <p class="text-form">
+          {{languageTraslate("Precio público")}}
+          <app-common-input-text [value]="GetPriceToString(_product.actualPrice)"                                
+                                 [isRequired]="true"
+                                 [nameId]="'add_price_public'"
+                                 [isMoney]="true"
+                                 [enable]="false"
+                                   ></app-common-input-text>
+        </p>
+
+
+
+        <p class="text-form">
+          {{languageTraslate("Modo de entrega")}}
+          <select (click)="onSelectChangeDelivery($event)" name="deliveryMode">
+            @if(_deliveryList!=undefined){
+            @if(_product.deliveryMode)
+            {
+            <option value="0" selected>
+              {{_product.deliveryMode.name}}
+            </option>
+            }
+            @else{
+            <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+            }
+            @for( item of _deliveryList; track item.id){
+            <option value="{{item.id}}">{{item.name}}</option>
+            }
+            }
+          </select>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Estatus")}}
+          <select (change)="OnselectStatus($event)">
+            @if(_statusList!=undefined){
+            @if( _product.status)
+            {
+            <option value="0" selected>
+              {{_product.status.name}}
+            </option>
+            }
+            @else{
+            <option value="0" selected>
+              {{languageTraslate("Seleccionar")}}
+            </option>
+
+            }
+            @for( item of _statusList; track item.id){
+            <option value="{{item.id}}">{{item.name}}</option>
+            }
+            }
+          </select>
+        </p>
+
+
+        <p class="text-form">
+          {{languageTraslate("Disponibilidad del producto")}}
+          <select (change)="OnselectAvailable($event)">
+            @if(_availableList!=undefined){
+
+            @if( _product.availableDay)
+            {
+            <option value="0" selected>
+              {{_product.availableDay.name}}
+            </option>
+            }
+            @else{
+            <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+            }
+            @for( item of _availableList; track item.id){
+            <option value="{{item.id}}">{{item.value}}</option>
+            }}
+          </select>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Tipo de producto")}}
+          <select (change)="OnselectTypeProduct($event)">
+            @if(_typeProductList!=undefined){
+
+            @if( _product.idTypeOfProduct)
+            {
+            <option value="0" selected>
+              {{_product.typeProductName}}
+            </option>
+            }
+            @else{
+            <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+            }
+            @for( item of _typeProductList; track item.id){
+            <option value="{{item.id}}">{{item.name}}</option>
+            }
+            }
+          </select>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("¿Es un producto?")}}
+          <app-common-btn-on-off (Changed)="ChangedIsProduct($event)"
+                                 [Status]="_product.isProduct">
+          </app-common-btn-on-off>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Verificado")}}
+          <app-common-btn-on-off (Changed)="ChangedDisble($event)"
+                                 [Status]="!(_product.disable)"
+                                 [Enable]="false"
+                                 Msg="Su producto será verificado por los administradores,  antes de poder ser publicado en nuestra  plataforma.">
+          </app-common-btn-on-off>
+        </p>
+
+
+        <p class="text-form">
+          {{languageTraslate("Agregar descripción")}}
+          <button class="btn-description" (click)="viewDescription.style.display = 'flex'">{{languageTraslate("Agregar ")}}</button>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Agregar filtros")}}
+          <button class="btn-description" (click)="VisibleAgregateFilter()">{{languageTraslate("Agregar ")}}</button>
+        </p>
+      </div>
+
+
+
+      <div class="containe-file-btn">
+        <button class="btn-new" (click)="setViewNewImg(true)">{{languageTraslate("Subir nueva imagen")}}</button>
+        <button class="btn-select" (click)="closeViewAddImg(true)">{{languageTraslate("Seleccionar imagen existente")}}</button>
+      </div>
+
+
+      <div class="btn-scroll">
+        @if(true){
+        <button (click)="validateProduct()"><i class="bi bi-floppy2-fill"></i></button>
+        }
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <app-common-input-file [nameFile]="GetCleaner(_product.name)"></app-common-input-file>
+
+  @if(_viewAddImg){
+
+  <div #viewImages class="img-list">
+    <div class="container-search">
+      <button class="close-btn" (click)="closeViewAddImg(false)"><i class="bi bi-house"></i></button>
+      <b>Buscar</b>
+      <div>
+        <div class="container-btn-search">
+          <input #search [ngModel]="" />
+          <button (click)="SearchImg(search.value)"><i class="bi bi-search"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-scroll">
+      @if(!listImgeLoading){
+
+      @if(_listImge==null || _listImge == undefined || _listImge.length<=0){
+      <h6>Nada para mostrar</h6>
+      }
+
+
+      @for (img of _listImge; track img.id) {
+
+      <div class="container-list-img" (click)="SelectImg(img)">
+        <div>
+          <label class="text-img">{{img.name}}</label><br />
+          <label class="text-img-refer">ImaRefer </label>
+        </div>
+        <img class="ico-img" src="{{GetUrl(img)}}" />
+      </div>
+      }
+      }
+      @else{
+      <img class="loading-min" src="{{_configservice.GetHostApi()}}Img/loading.gif" />
+      }
+    </div>
+
+  </div>
+  }
+
+  <div #viewDescription class="container-description-general">
+    <div class="scroll-vertical">
+      <p class="text-form text">
+        {{languageTraslate("Política de devolución y garantía")}}
+        <textarea class="textarea" name="deacription" [(ngModel)]="_returnAndWarrantyPolicy"></textarea>
+      </p>
+      <br />
+      <p class="text-form text">
+        {{languageTraslate("Especificaciones técnicas")}}
+        <textarea class="textarea" name="deacription" [(ngModel)]="_technicalSpecifications"></textarea>
+      </p>
+      <br />
+      <p class="text-form text">
+        {{languageTraslate("Instrucciones de uso")}}
+        <textarea class="textarea" name="deacription" [(ngModel)]="_instructionsforUse"></textarea>
+      </p>
+      <br />
+      <p class="text-form text">
+        {{languageTraslate("Tiempos de entrega")}}
+        <textarea class="textarea" name="deacription" [(ngModel)]="_deliveryTimes"></textarea>
+      </p>
+      <br />
+      <p class="text-form text">
+        {{languageTraslate("Descripción general")}}
+        <textarea class="textarea" name="deacription" [(ngModel)]="_description"></textarea>
+      </p>
+
+
+      <br />
+      <hr />
+      <p class="text-form text">
+        {{languageTraslate("Url de producto referencia")}}
+        <textarea class="textarea" name="deacription" [(ngModel)]="_product.urlReferProduct"></textarea>
+      </p>
+    </div>
+    <button (click)="viewDescription.style.display = 'none'"><i class="bi bi-house"></i></button>
+  </div>
+
+
+
+  @if(NullProductSelectId("0")){
+  <app-common-menu-grid (Edit)="Edit($event)"
+                        (Delete)="Delete($event)"
+                        (Clone)="Clone($event)"
+                        (ClearData)="ClearData($event)"
+                        (Change)="ChangeMenu($event)"
+                        [IsClone]="true"
+                        [item]="_productService.rowSeletion"></app-common-menu-grid>
+
+  }
+
+
+  <app-common-custom-grid columns="5"
+                          (Filter)="FilterProduct($event)"
+                          (FilterCancel)="FilterCancel($event)"
+                          (GoPage)="GoPage($event)"
+                          (GoBackPage)="GoBackPageData($event)"
+                          [page]="this.page.toString()">
+
+    @if(_productService._listProduct!=undefined){
+    <div class="div-header">
+      Imagen
+    </div>
+    <div class="div-header">
+      Nombre
+    </div>
+    <div class="div-header">
+      Precio
+    </div>
+    <div class="div-header">
+      Categoria
+    </div>
+    <div class="div-header">
+      Status
+    </div>
+    @for( item of _productService._listProduct; track item.name){
+    <div class="div-item-image" (click)="Selection(item.id)" [ngClass]="{'row-select':NullProductSelectId(item.id)}">
+      <img class="ico" [src]="GetUrl(item.firsImg)" />
+    </div>
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':NullProductSelectId(item.id)}">
+      {{item.name}}
+    </div>
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':NullProductSelectId(item.id)}">
+      Actual:{{ConverCurrency(item.actualPrice)}}-  Inter: {{ConverCurrency(item.pricesInternal)}}
+    </div>
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':NullProductSelectId(item.id)}">
+      {{item.typeProductName}}
+    </div>
+
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':NullProductSelectId(item.id)}">
+      <p class="text-align-center"> {{GetStatusProduct(item)}} </p>
+      @if(GetStatusProduct(item)=="En Verificación"){
+      <i class="bi bi-clock-history  ico-status disable" name="Debe ser autorizado por administrador de la página"></i>
+      }@else if(GetStatusProduct(item)!="Publicado"){
+      <i class="bi bi-eye-slash ico-status  private "></i>
+      }
+    </div>
+    }
+    }
+  </app-common-custom-grid>
+
+  <app-product-filter-search-ia></app-product-filter-search-ia>
+
+  <br />
+  <br />
+  <br />
+  <br />
+
+
+  <div class="margin-top"></div>
+
+</app-permission>

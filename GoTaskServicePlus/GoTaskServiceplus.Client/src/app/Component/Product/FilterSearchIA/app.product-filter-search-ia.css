@@ -1,0 +1,82 @@
+.container-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #80808085;
+  top: 0px;
+  left: 0px;
+  flex-wrap: wrap;
+  z-index: 1;
+}
+
+button{
+    background-color:white;
+    border-radius:5px;
+}
+
+
+
+
+.container-filter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: green;
+  height: auto;
+  min-height: 300px;
+  min-width: 400px;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+
+@media (max-width: 400px) {
+
+  .container-filter-item {
+   
+    min-height: 300px;
+    min-width: 90%;
+   
+  }
+
+
+}
+
+
+.div-scroll {
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  height: 300px;
+  width: 100%;
+  background-color: #8f8f8f;
+  overflow-x: hidden;
+}
+
+
+  @media (max-width: 700px) {
+    .div-scroll {
+      width: 90%;
+    }
+  }
+
+  .container-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: space-around;
+    width: 100%;
+  }
+
+
+  .item-filter {
+    padding: 5px;
+    background-color: aqua;
+    border-radius: 5px;
+  }

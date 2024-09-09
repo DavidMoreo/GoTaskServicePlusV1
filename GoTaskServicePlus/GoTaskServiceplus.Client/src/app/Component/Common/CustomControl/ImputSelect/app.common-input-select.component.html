@@ -1,0 +1,19 @@
+<div class="container-select" >
+  <input         
+          [ngClass]="{'background-color-red-rgb':(isRequired && (!value || value.length<=0 || value =='Seleccionar' ) )}"
+          [value]="GetValue()"  readonly/>
+  <select (change)="OnSelectChange($event)"
+          name="deliveryMode"         
+          id="select_id"
+          #selectId>
+
+    <option value="0" selected>
+      {{languageTraslate("Seleccionar")}}
+    </option>
+
+    @for( item of GetList(); track item.id){
+    <option value="{{item.id}}">{{item.name}}</option>
+    }
+  </select>
+</div>
+

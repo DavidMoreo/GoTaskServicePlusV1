@@ -1,0 +1,157 @@
+.container-city-filter {
+  width: 100vw;
+  height: 100vh;
+  background-color: #808080a3;
+  box-shadow: 0 0 5px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+}
+
+
+.filter-item {
+  display: flex;
+  width: auto;
+  min-width: auto;
+  padding: 10px;
+  height: 200px;
+  border-radius: 5px;
+  background-color: #ff4500;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 0 0 5px black;
+}
+
+
+.btn-action{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:5px;
+    
+    width:100%;
+    gap:10px;
+    height:50px;
+
+}
+
+
+  .btn-action button {
+    background-color: #5d5d61;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid white;
+    width: 150px;
+    height: 40px;
+    box-shadow: 0 0 5px #000;
+    color: #fff;
+  }
+
+
+p {
+  padding: 5px;
+  color: white;
+}
+
+
+
+/*# input filter*/
+
+.input-filter {
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+}
+
+
+.list-filter {
+  position: absolute;
+  top: 30px;
+  padding: 5px;
+  border-radius: 0 5px 5px;
+  min-height: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: start;
+  box-shadow: 0 0 5px #000;
+  gap: 5px;
+}
+
+
+
+.btn-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px;
+  min-width: 98%;
+  box-shadow: 0 0 5px #000;
+  background-color: #9f9f9f;
+  border-radius: 5px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+  .btn-list-item button {
+    height: 30px;
+    width: 30px;
+    box-shadow: 0 0 5px 1px black;
+    background-color: #c7c7c7;
+    border-radius: 5px;
+    border: none;
+   
+    color: #413e3e;
+  }
+
+  .btn-list-item p {
+    font-size: 12px;
+  }
+
+
+.container-filter {
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+/*# legend input filter*/
+
+
+
+.list-select-city {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px;
+  width: 100%;
+  gap: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.item-city {
+  border: 20px;
+  background-color: #d5d5d5;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #000000;
+  color: #000;
+  border: 1px solid #1c1c1c;
+  cursor: pointer;
+}
+
+
+.title{
+    text-align:center;
+}

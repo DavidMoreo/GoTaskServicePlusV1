@@ -1,0 +1,94 @@
+
+<app-permission>
+
+  <div class="menu-status"  >
+    <app-common-popup-msg  count="{{GetCountList('purchaseGenerated')}}"  >
+      <button class="btn-item-menu " [ngClass]="{'btn-item-menu-select': StatusPage(_ListBuyService._movementType.purchaseGenerated)}" (click)="GetNewStatus(_ListBuyService._movementType.purchaseGenerated)">Pendiente</button>
+    </app-common-popup-msg>
+    <app-common-popup-msg count="{{GetCountList('purchaseInProcess')}}" >
+      <button class="btn-item-menu" [ngClass]="{'btn-item-menu-select': StatusPage(_ListBuyService._movementType.purchaseInProcess)}" (click)="GetNewStatus(_ListBuyService._movementType.purchaseInProcess)">En alistamiento</button>
+    </app-common-popup-msg>
+    <app-common-popup-msg count="{{GetCountList('purchaseInDelivery')}}" >
+      <button class="btn-item-menu" [ngClass]="{'btn-item-menu-select': StatusPage(_ListBuyService._movementType.purchaseInDelivery)}" (click)="GetNewStatus(_ListBuyService._movementType.purchaseInDelivery)">En reparto lista para recogida</button>
+    </app-common-popup-msg>
+    <app-common-popup-msg count="{{GetCountList('purchaseCompleted')}}" >
+      <button class="btn-item-menu" [ngClass]="{'btn-item-menu-select': StatusPage(_ListBuyService._movementType.purchaseCompleted)}" (click)="GetNewStatus(_ListBuyService._movementType.purchaseCompleted)">Entregada</button>
+    </app-common-popup-msg>
+    <app-common-popup-msg count="{{GetCountList('purchaseCancelledByCustomer')}}" >
+      <button class="btn-item-menu" [ngClass]="{'btn-item-menu-select': StatusPage(_ListBuyService._movementType.purchaseCancelledByCustomer)}" (click)="GetNewStatus(_ListBuyService._movementType.purchaseCancelledByCustomer)"> Cancelada por cliente</button>
+    </app-common-popup-msg>
+    <app-common-popup-msg count="{{GetCountList('purchaseCancelledByVendor')}}" >
+      <button class="btn-item-menu" [ngClass]="{'btn-item-menu-select': StatusPage(_ListBuyService._movementType.purchaseCancelledByVendor)}" (click)="GetNewStatus(_ListBuyService._movementType.purchaseCancelledByVendor)"> Cancelada por Vendedor</button>
+    </app-common-popup-msg>
+
+  </div>
+
+
+
+  @if(NullProductSelectId("0")){
+  <app-common-menu-grid (Delete)="Delete($event)"
+                        [IsClone]="false"
+                        [item]="GetRowSelect()"></app-common-menu-grid>
+  }
+
+
+
+  <app-common-custom-grid columns="1">
+    <div class="div-header ">
+      Fecha de compra
+    </div>
+
+    @for (group of _ListBuyService._listBuyGroupByIdBuy ; track group){
+    <div class=" div-item-local" (click)="Selection(group)" [ngClass]="{'row-select':GetRowSelect()==group}">
+      <p class="date"> {{GetDateGroup(group)}}</p>
+    </div>
+    @if(GetRowSelect()==group){
+    @for (item of GetGroup(_ListBuyService._listProduct,group) ; track item){
+    <div class="datail-purchase">
+      <div class="item-product"> <b class="quantity">{{item.quantity}}</b>: <p class="name"> {{item.name}}</p> <p class="price-item">{{converCurrency(item.salePrice)}}</p> </div>
+    </div>
+    }
+
+    <div class="datail-purchase">
+      <div class="item-product total"> <b class="quantity">{{GetGroupPrice(group)}}</b></div>
+    </div>
+    <div class="datail-purchase">
+      <div class="div-detail-purchare">
+        <b>Datos del comprador</b>
+        <p>Nombre: <b> {{GetGroupDetail(group,"user.Name")}}</b></p>
+        <!--<p>No:{{GetGroupDetail(group,"user.numberPurchase")}}</p>-->
+        <!--<p>Ciudad:</p>-->
+      </div>
+    </div>  
+    <div class="datail-purchase center">
+      <div class="item-product-menu total">
+        <b> Cambiar estado  </b>
+        @if(GetGroupDetail(group,"detail.statusMovementItem") != this._ListBuyService._movementType.purchaseCompleted){
+        <button (click)="CancelBuy(GetGroupDetail(group,'detail.id'))" class="btn-changed-status background-color-blue"><i class="bi bi-x-circle-fill"></i> Cancelar </button>
+        }
+        @if(GetGroupDetail(group,"detail.statusMovementItem") == _ListBuyService._movementType.purchaseGenerated){
+        <button (click)="ChangedStatus(GetGroupDetail(group,'detail.id'),this._ListBuyService._movementType.purchaseInProcess)" class="btn-changed-status background-color-green">En alistamiento</button>
+        }
+
+        @if(GetGroupDetail(group,"detail.statusMovementItem") == _ListBuyService._movementType.purchaseInProcess){
+        <button (click)="ChangedStatus(GetGroupDetail(group,'detail.id'),this._ListBuyService._movementType.purchaseInDelivery)" class="btn-changed-status background-color-green">En reparto lista para recogidao</button>
+        }
+
+        @if(GetGroupDetail(group,"detail.statusMovementItem") == this._ListBuyService._movementType.purchaseInDelivery){
+        <button (click)="ChangedStatus(GetGroupDetail(group,'detail.id'),this._ListBuyService._movementType.purchaseCompleted)" class="btn-changed-status background-color-green">Compra entregada</button>
+        }
+      </div>
+    </div>
+    }
+    }
+
+
+  </app-common-custom-grid>
+
+
+
+
+
+
+</app-permission>
+

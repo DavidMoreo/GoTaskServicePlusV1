@@ -1,0 +1,75 @@
+
+
+<div class="chat-div">
+
+  <div class="scroll-chat" id="scrollContainer">
+    @for( msg of _chatBotService.GetChatList(); track msg.id){
+    @if(!msg.isBot){
+
+    <div class="item-response msg-user">
+      @for( text of msg.msg.split('\n'); track text){
+      @if(text!="" ){
+      <br />
+      <p class="justify text-detail"> {{text}}</p>
+      }
+      }
+
+    </div>
+    }@else{
+
+    <div class="item-response msg-bot">
+
+      @for( text of msg.msg.split('\n'); track text){
+      @if(text!="" ){
+      <br />
+      <p class="justify text-detail"> {{text}}</p>
+      }
+      }
+
+    </div>
+    }
+    }
+
+    @if(!_chatBotService.chatListStatus){
+    <img class="loading-pointer" src="assets/loading_pointer.gif" />
+    }
+
+  </div>
+</div>
+
+@if(statusSpeech){
+<div class="container-mic">
+  <button class="mic-img"><i class="bi bi-mic-fill"></i></button>
+</div>
+}
+
+<div class="input-text">
+  <div class="div-container-text">
+    <div class="div-input-text">
+      @if(_chatBotService.chatListStatus){
+      <textarea #textArea (focus)="onFocus()" autofocus (keyup.enter)="QuestionMsg()" class="text" [(ngModel)]="question.question"></textarea>
+      <div class="mic-input-msg">
+        @if(!statusSpeech){
+        <button class="btn-mic" (click)="startRecording()"><i class="bi bi-mic"></i></button>
+        }
+        @if(statusSpeech){
+        <button class="btn-mic" (click)="stoptRecording()"><i class="bi bi-stop-fill"></i></button>
+        }
+      </div>
+      }@else{
+      <textarea (keyup.enter)="QuestionMsg()" class="text" [value]="question.question" disabled></textarea>
+      }
+    </div>
+
+
+    @if(_chatBotService.GetChatList()){
+    <button class="btn-sent" (click)="QuestionMsg()"><i class="bi bi-send-fill"></i> </button>
+    }@else{
+    <button class="btn-sent" (click)="CancelPrediction()"><i class="bi bi-x-circle-fill"></i></button>
+    }
+
+  </div>
+</div>
+
+
+

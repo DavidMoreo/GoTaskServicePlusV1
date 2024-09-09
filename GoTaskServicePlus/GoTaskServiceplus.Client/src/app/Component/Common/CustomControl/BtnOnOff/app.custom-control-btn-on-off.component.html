@@ -1,0 +1,14 @@
+<button class="btn">
+  @if(Status){
+ 
+    <div class="btn-action on " (click)="ChangedStatus(false)" ><i class="bi bi-check-lg"></i></div>
+  
+  <!--<i class="bi bi-toggle-on" ></i>-->
+  }
+  @else{
+ 
+    <div class="btn-action off " (click)="ChangedStatus(true)" ></div>
+  
+  <!--<i class="bi bi-toggle-off" ></i>-->
+  }
+</button>

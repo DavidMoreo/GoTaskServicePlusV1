@@ -1,0 +1,217 @@
+
+<app-permission>
+  <div class="containe-concept">
+
+
+    <div class="scroll-menu">
+      <div class="containe-concept-menu">
+        <button class="tab-item" [ngClass]="{'active':_tab=='country','disable':_tab!='country'}" (click)="pageTab('country')">Pais</button>
+        <button class="tab-item" [ngClass]="{'active':_tab=='city','disable':_tab!='city'}" (click)="pageTab('city')">Ciudad</button>
+        <button class="tab-item" [ngClass]="{'active':_tab=='delivery','disable':_tab!='delivery'}" (click)="pageTab('delivery')">modo deentrega</button>
+        <button class="tab-item" [ngClass]="{'active':_tab=='status','disable':_tab!='status'}" (click)="pageTab('status')">sttus </button>
+        <button class="tab-item" [ngClass]="{'active':_tab=='available','disable':_tab!='available'}" (click)="pageTab('available')">Disponibilidad de producto </button>
+        <button class="tab-item" [ngClass]="{'active':_tab=='typeProduct','disable':_tab!='typeProduct'}" (click)="pageTab('typeProduct')"> Tipo de producto </button>
+      </div>
+    </div>
+
+    <div class="concept-item">
+
+      <!--<h1 class="title  margin-top">Pais - Ciudad</h1>-->
+      @if(_tab=="country"){
+      <div class="container-input">
+        <p class="text-form">
+          {{languageTraslate("Nombre Páis")}}
+          <input #name type="text" name="name" (change)="changedInputName($event,'country')" [ngModel]="_concept.name" />
+          {{languageTraslate("Codigo")}}
+          <input type="text" name="code" (change)="changedInputValue($event,'country')" [(ngModel)]="_concept.value" />
+
+        </p>
+      </div>
+      }
+
+
+      @if(_tab=="typeProduct"){
+      <div class="container-input">
+        <p class="text-form">
+          {{languageTraslate("Nombre")}}
+          <input #name type="text" name="name" (change)="changedInputName($event,'typeProduct')" [ngModel]="_concept.name" />
+          {{languageTraslate("Tipo")}}
+          <input type="text" name="code" (change)="changedInputValue($event,'typeProduct')" [(ngModel)]="_concept.value" />
+
+        </p>
+      </div>
+      }
+
+
+      @if(_tab == "city"){
+      <div class="container-input">
+        <p class="text-form">
+          {{languageTraslate("Nombre Ciudad")}}
+          <input type="text" name="name" (change)="changedInputName($event,'city')" [ngModel]="_concept.name" />
+        </p>
+        <p class="text-form">
+          {{languageTraslate("Codigo")}}
+          <input type="text" name="code" (change)="changedInputValue($event,'city')" [(ngModel)]="_concept.value" />
+        </p>
+
+
+
+        <p class="text-form">
+          {{languageTraslate("Nombre Pais")}}
+          <select (input)="changedSelectCountry($event)">
+            @if(this._http._contryList.length>0){
+            <option value="0" selected>{{languageTraslate("Seleccionar")}}</option>
+            }
+            @for (concept of this._http._contryList; track concept.id) {
+
+            <option value="{{concept.id}}">{{concept.name}}</option>
+            }
+          </select>
+        </p>
+
+      </div>
+      }
+
+      @if(_tab == "status"){
+      <b> {{languageTraslate("estado de producto")}}</b>
+
+      <p class="text-form">
+        {{languageTraslate("Nombre ")}}
+        <input #name type="text" name="name" (change)="changedInputName($event,'status')" [ngModel]="_concept.name" />
+      </p>
+      <p class="text-form">
+        {{languageTraslate("Codigo")}}
+        <input #name type="text" name="code" (change)="changedInputValue($event,'status')" [(ngModel)]="_concept.value" />
+
+      </p>
+      }
+
+
+      @if(_tab == "delivery"){
+      {{languageTraslate("deivery ")}}
+      <p class="text-form">
+        {{languageTraslate("Nombre ")}}
+        <input type="text" name="name" (change)="changedInputName($event,'delivery')" [ngModel]="_concept.name" />
+      </p>
+      <p class="text-form">
+        {{languageTraslate("Codigo")}}
+        <input type="text" name="delivery_value" (change)="changedInputValue($event,'delivery')" [(ngModel)]="_concept.value" />
+
+      </p>
+
+
+      }
+
+      @if(_tab == "available"){
+      <p class="text-form">
+        {{languageTraslate("Nombre ")}}
+        <input type="text" name="name" (change)="changedInputName($event,'available')" [ngModel]="_concept.name" />
+      </p>
+      <p class="text-form">
+        {{languageTraslate("Codigo")}}
+        <input type="text" name="delivery_value" (change)="changedInputValue($event,'available')" [(ngModel)]="_concept.value" />
+
+      </p>
+
+      }
+
+
+      <p class="text-form">
+        {{languageTraslate("Publico")}}
+
+        <button class="btn1">
+
+          @if(_concept.isPublic){
+          <i class="bi bi-toggle-on" (click)="ChangedIsPublic(false)"></i>
+          }
+          @if(!_concept.isPublic){
+          <i class="bi bi-toggle-off" (click)="ChangedIsPublic(true)"></i>
+          }
+
+        </button>
+
+
+      </p>
+
+    </div>
+
+
+    <div class="btn-scroll">
+      @if(true){
+      <button (click)="SaveAndUpdateConcept()"><i class="bi bi-floppy2-fill"></i></button>
+
+      }
+    </div>
+  </div>
+
+  <div class="scroll">
+    <div class="container-concep">
+      <div class="div-header">
+        Concepto
+      </div>
+      <div class="div-header">
+        Nombre
+      </div>
+      <div class="div-header">
+        Codigo
+      </div>
+      <div class="div-header">
+        Tipo
+      </div>
+
+      @if(this._http._conceptList!=undefined){
+
+      @for( item of this._http._conceptList; track item.name){
+
+      <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+        {{GetConceptValue(item.concept,'name')}}
+        @if(_rowSeletion==item.id){
+        <div class="edit-visible">
+          <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+          <button (click)="DeleteConcept(item.id)"><i class="bi bi-trash3"></i></button>
+        </div>
+        }
+      </div>
+
+
+      <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+        {{item.name}}
+        @if(_rowSeletion==item.id){
+        <div class="edit-visible">
+          <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+          <button (click)="DeleteConcept(item.id)"><i class="bi bi-trash3"></i></button>
+        </div>
+        }
+
+      </div>
+      <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+        {{item.value}}
+        @if(_rowSeletion==item.id){
+        <div class="edit-visible">
+          <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+          <button (click)="DeleteConcept(item.id)"><i class="bi bi-trash3"></i></button>
+        </div>
+        }
+
+      </div>
+
+
+      <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+
+        {{item.type}}
+        @if(_rowSeletion==item.id){
+        <div class="edit-visible">
+          <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+          <button (click)="DeleteConcept(item.id)"><i class="bi bi-trash3"></i></button>
+        </div>
+        }
+      </div>
+      }
+
+      }
+
+    </div>
+  </div>
+
+
+</app-permission>

@@ -1,0 +1,57 @@
+
+
+<div class="container-calendar">
+
+  <div class="container-calendar-item">
+
+    <div class="calendar">
+      <div class="header">
+        <h2>{{DateString(dateSelect)}}</h2>
+        <div class="btn-go" >
+          <button  (click)="GoDay(false)"  ><i class="bi bi-chevron-left"></i></button> <!--// Antes-->
+          <button  (click)="GoDay(true)"  ><i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div class="container-datail">
+
+        <div class="detail-item">
+
+          <h2  class="title-detail" >
+            Agenda disponible
+          </h2>
+
+          <div class="detail">            
+              <i class="bi bi-clock-history"></i> <b>6:00 Am</b>  
+          </div>
+
+        </div>
+
+
+        <div class="days">
+          <!-- Días del mes -->
+         
+          @for( day of days; track day){
+          @if(day.active){
+          <div class="center cursor-pointer">
+            <div (click)="SelectDay(day)" class="day " [ngClass]="{'day-active':day.day == daySelect.day, 'day-on':day.day != daySelect.day  }" >{{day.day}}</div>
+          </div>
+          }@else{
+          <div class="center">
+            <div class="day day-off">{{day.day}}</div>
+          </div>
+          }
+          }
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+

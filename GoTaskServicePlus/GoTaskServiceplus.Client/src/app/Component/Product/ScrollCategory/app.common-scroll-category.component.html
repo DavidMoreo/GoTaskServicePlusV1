@@ -1,0 +1,19 @@
+
+<div class="scroll-category ">
+  <div class="item-category" (click)="FilterChange('00000000-0000-0000-0000-000000000000')">
+    <div class="continer-text-category">
+      <p>TODOS</p>
+    </div>
+  </div>
+  @for (item of  GetCategory() ; track item.id) {
+  <div class="item-category" [ngClass]="{'select-category':Id==item.id}" (click)="FilterChange(item.id)">
+    <img class="img-category" [src]="GetImg(item.url, item.idCompany)" />
+    <div class="continer-text-category">
+      <p>{{item.name}}</p>
+    </div>
+  </div>
+  }
+
+
+  <div style="min-width:200px; height:50px; "></div>
+</div>

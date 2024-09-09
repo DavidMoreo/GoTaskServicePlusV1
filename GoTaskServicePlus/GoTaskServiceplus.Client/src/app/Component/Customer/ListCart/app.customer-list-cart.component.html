@@ -1,0 +1,49 @@
+<!--<h1 class="title margin-top ">Productos</h1>-->
+<!--<app-common-loading [active]="_CartService.GetListNull()"></app-common-loading>-->
+
+<div class="scroll">
+  <div class="container-prices-general">
+
+    @if(GetListProduct()){
+
+    <div class="product-container">
+      @for (item of GetListProduct() ; track item.id) {
+      <app-item-product-cart [product]="item"></app-item-product-cart>
+      }
+    </div>
+    <div class="container-prices">
+      <div class="prices">
+        <h3 class="title">Pecios</h3>
+        <div class="price-item">
+          <p class="title-name">Nombre</p>
+          <p class="title-price">Precio</p>
+        </div>
+        @for (item of GetListProduct() ; track item.id) {
+        <div class="price-item">
+          <p class="name">{{item.name}}</p>
+          <p class="value">{{GetPriceString(item.salePrice)}}</p>
+        </div>
+        }
+        <div class="price-item">
+          <p class="title-price">Precio Total</p>
+          <p class="value">{{GetPriceString(SumValuesProduct())}}</p>
+        </div>
+
+        <div class="price-item">
+          <p class="title-price"></p>
+          <p class="value"><button class="buy-product" (click)="BuyProduct(true)">Ir a tienda <i class="bi bi-shop"></i> </button></p>
+        </div>
+      </div>
+
+  </div>
+    }@else{
+
+    <p class="title1">No tienes productos en tu carrito</p>
+    }
+  </div>
+
+</div>
+
+
+<app-customer-buy-product></app-customer-buy-product>
+<app-menu-phone></app-menu-phone>

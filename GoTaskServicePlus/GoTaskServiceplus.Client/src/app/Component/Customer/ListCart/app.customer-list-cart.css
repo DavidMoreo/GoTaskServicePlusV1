@@ -1,0 +1,151 @@
+.product-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background-color: white;
+  min-width: 50%;
+  height: 100vh;
+  padding-top: 10px;
+  align-items: center;
+  row-gap: 19px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding-bottom:300px;
+}
+
+@media (max-width: 900px) {
+  .product-container {
+    min-width: 100vw;
+    max-width: 100vw;
+    width: auto;
+  }
+}
+
+
+.container-prices-general {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+}
+
+@media (max-width: 901px) {
+
+  .container-prices-general {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: start;
+    align-items: center;
+    row-gap: 10px;
+  }
+}
+
+
+
+.container-prices {
+  min-width: 50%;
+  min-height: 100px;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0px 0px 5px black;
+}
+
+
+
+
+.prices {
+  background-color: white;
+}
+
+.price-item {
+  border-bottom: 1px solid #80808054;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 100px;
+}
+
+
+@media (max-width: 480px) {
+  .price-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 100vw;
+  }
+}
+
+
+.value {
+  width: 150px;
+  text-align: start;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.name {
+  font-size: 14px;
+  width:250px;
+}
+
+
+.title {
+  width: 100%;
+  text-align: center;
+  margin-top:100px;
+
+}
+
+
+.title-price {  
+  width: 150px;
+  text-align: start;
+  font-weight: bold;
+}
+
+
+
+
+@media (max-width: 480px) {
+  .name {
+    padding-left: 10px;
+    font-size: 10px;
+    overflow: hidden;
+    width: 60%;
+  }
+
+  .title-name {
+    padding-left: 10px;
+    font-weight: bold;
+    text-align:start;
+  }
+
+  .title-price {
+    width: 46%;
+    font-weight: bold;
+    text-align: start;
+  }
+}
+
+.buy-product{
+    background-color:green;
+    color:white;
+    height:35px;
+    width:auto;
+    border-radius:5px;
+    border:none;
+    box-shadow:0px 0px 5px black;
+   cursor:pointer;
+}
+
+
+
+.title1 {
+  background-color: green;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+  margin-top:100px;
+}

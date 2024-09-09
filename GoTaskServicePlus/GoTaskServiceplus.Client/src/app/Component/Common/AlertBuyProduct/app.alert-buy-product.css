@@ -1,0 +1,167 @@
+.alert-buy-product {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  background-color: #5656568a;
+  box-shadow: 0px -1px 5px black;
+  bottom: 1px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: onBuy 1s ease forwards;
+}
+
+
+
+  @keyframes onBuy {
+
+    from {
+      transform: translateY(200px);
+    }
+
+  
+    to {
+      transform: translateY(0px);
+    }
+  }
+
+
+  @media (max-width: 468px) {
+    .alert-buy-product {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      height: 200px;
+      overflow: hidden;
+      width: 100%;
+      bottom: 100px;
+    }
+  }
+
+
+.item {
+  border-radius: 5px;
+  padding: 5px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  row-gap: 10px;
+  column-gap: 10px;
+  background-color: #ff4500;
+  padding: 20px;
+  box-shadow: 0px 0px 5px black;
+
+}
+
+
+
+
+
+  @media (max-width: 468px) {
+    .item {
+      height: 150px;
+      width: 100%;
+      row-gap: 10px;
+      align-items: center;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+
+
+  .img {
+    height: 90px;
+    max-width: 100px;
+    width: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px black;
+  }
+
+
+  @media (max-width: 468px) {
+    .img {
+      height: 40px;
+      max-width: 60px;
+      width: auto;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px black;
+    }
+  }
+
+
+  .item-buttom {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: end;
+    row-gap: 10px;
+    column-gap: 20px;
+    width: 100%;
+  }
+
+  @media (max-width: 468px) {
+    .item-buttom {
+      justify-content: center
+    }
+  }
+
+
+  .btn {
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    width: 120px;
+    background-color: #007bff;
+    box-shadow: 0px 0px 5px black, 0px 0px 1px 1px white inset;
+    color: white;
+  }
+
+  @media (max-width: 468px) {
+    .btn {
+      font-size: 9px;
+      width: 90px;
+    }
+  }
+
+  .img-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+  }
+
+
+  @media (max-width: 468px) {
+    .img-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      column-gap: 20px;
+      row-gap: 10px;
+    }
+  }
+
+  .title {
+    color: white;
+    text-shadow: 0px 0px 0px black;
+    font-size: 12px;
+    text-align: start;
+  }
+
+
+  @media (max-width: 468px) {
+    .title {
+      font-size: 10px;
+      width: 50%;
+      white-space: nowrap; /* Evita el salto de línea */
+      overflow: hidden; /* Oculta el texto que desborda */
+      text-overflow: ellipsis; /* Agrega puntos suspensivos */
+    }
+  }

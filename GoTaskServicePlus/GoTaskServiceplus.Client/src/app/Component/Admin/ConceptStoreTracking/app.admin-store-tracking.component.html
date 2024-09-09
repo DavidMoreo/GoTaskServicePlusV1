@@ -1,0 +1,123 @@
+
+<app-permission>
+  <div class="containe-concept">
+
+
+    <div class="scroll-menu">
+      <div class="containe-concept-menu">
+        <button class="tab-item" (click)="pageTab('country')">Clientes</button>
+
+      </div>
+    </div>
+
+    <div class="concept-item">
+      <div class="container-input">
+        <p class="text-form">
+          {{languageTraslate("Nombre Tienda")}}
+          <input #name type="text" name="name" [(ngModel)]="_Concept.concept.name" />
+          {{languageTraslate("Nombre del cliente")}}
+          <input type="text" name="code" [(ngModel)]="_Concept.concept.code" />
+
+        </p>
+        <p class="text-form">
+          {{languageTraslate("Coordenadas")}}
+          <button name="coordinates" (click)="LoadGps()"><i class="bi bi-geo-alt-fill"></i> </button>
+          <input [(ngModel)]="_Concept.concept.value" />
+        </p>
+      </div>
+
+      <p class="text-form">
+        {{languageTraslate("Publico")}}
+        <app-common-btn-on-off (Changed)="ChangedIsPublic($event)"
+                               [Status]="_Concept.concept.isPublic">
+        </app-common-btn-on-off>
+      </p>
+
+      <p class="text-form">
+        {{languageTraslate("Estado")}}
+        <app-common-btn-on-off (Changed)="ChangedStatus($event)"
+                               [Status]="_Concept.concept.disable">
+        </app-common-btn-on-off>
+      </p>
+    </div>
+    <div class="btn-scroll">
+      @if(true){
+      <button (click)="SaveAndUpdateConcept()"><i class="bi bi-floppy2-fill"></i></button>
+
+      }
+    </div>
+  </div>
+
+  @if(NullProductSelectId("0")){
+  <app-common-menu-grid (Edit)="Edit($event)"
+                        (Delete)="Delete($event)"                      
+                        (ClearData)="ClearData($event)"
+                        (Change)="ChangeMenu($event)"
+                        [IsClone]="false"
+                        [item]="GetRowSelect()"></app-common-menu-grid>
+  }
+
+
+
+  <app-common-custom-grid columns="6"
+                          (Filter)="FilterProduct($event)"
+                          (FilterCancel)="FilterCancel($event)">
+
+
+    <div class="div-header">
+      Nombre tienda
+    </div>
+    <div class="div-header">
+      Nombre Cliente
+    </div>
+    <div class="div-header">
+      Codigo
+    </div> <div class="div-header">
+      Fecha
+    </div>
+    <div class="div-header">
+      Estado
+    </div>
+    <div class="div-header">
+      Map
+    </div>
+
+
+    @if(GetConceptList()!=undefined){
+
+    @for( item of GetConceptList(); track item.name){
+
+    <div class="div-item" (click)="Selection(item)" [ngClass]="{'row-select':GetRowSelect()==item.id}">
+      {{item.name}}
+    </div>
+
+
+    <div class="div-item" (click)="Selection(item)" [ngClass]="{'row-select':GetRowSelect()==item.id}">
+      {{item.code}}
+
+
+    </div>
+    <div class="div-item" (click)="Selection(item)" [ngClass]="{'row-select':GetRowSelect()==item.id}">
+      {{item.value}}
+    </div>
+    <div class="div-item" (click)="Selection(item)" [ngClass]="{'row-select':GetRowSelect()==item.id}">
+      Creado: {{item.creationDate}} <br /> Editado:  {{item.editDate}}
+    </div>
+
+    <div class="div-item" (click)="Selection(item)" [ngClass]="{'row-select':GetRowSelect()==item.id}">
+      {{item.disable?'Pendiente':"En seguimiento"}}
+    </div>
+
+    <div class="div-item" [ngClass]="{'row-select':GetRowSelect()==item.id}">
+
+      <a href="https://www.google.com/maps/search/{{GetMap(item)}}?sa=X" target="_blank">
+        <button class="map-btn">
+          <i class="bi bi-geo-alt-fill"></i>
+        </button>
+      </a>
+    </div>
+    }
+    }
+  </app-common-custom-grid>
+
+</app-permission>

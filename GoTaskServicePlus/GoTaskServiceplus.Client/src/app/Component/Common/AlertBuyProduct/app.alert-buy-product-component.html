@@ -1,0 +1,19 @@
+@if(_BuyProduct.product!=null){
+
+<div class="alert-buy-product">
+
+  <div class="item">
+    <div class="img-title">
+      <img class="img" src="{{GetImgUrl(_BuyProduct.product)}}" />
+      <p class="title">{{_BuyProduct.product.name}} Pruea de prodcu</p>
+    </div>
+
+    <div class="item-buttom">
+      <button class="btn" (click)="CartProduct()">Ir a mi carrito <i class="bi bi-cart4"></i> </button>
+      <button class="btn" (click)="Close()">Salir <i class="bi bi-x-circle"></i></button>
+    </div>
+
+  </div>
+
+</div>
+}

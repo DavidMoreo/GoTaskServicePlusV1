@@ -1,0 +1,102 @@
+
+<app-permission>
+
+  <h4>{{this._ListBuyService.stausBuy}}</h4>
+  <div class="menu-status">
+    <button (click)="GetNewStatus(_ListBuyService._movementType.purchaseGenerated)">En validación</button>
+    <button (click)="GetNewStatus(_ListBuyService._movementType.purchaseInProcess)">En alistamiento</button>
+    <button (click)="GetNewStatus(_ListBuyService._movementType.purchaseInDelivery)">En reparto lista para recogida</button>
+    <button (click)="GetNewStatus(_ListBuyService._movementType.purchaseCompleted)"> En entregada</button>
+    <button (click)="GetNewStatus(_ListBuyService._movementType.purchaseCancelledByCustomer)"> Cancelada por cliente</button>
+    <button (click)="GetNewStatus(_ListBuyService._movementType.purchaseCancelledByVendor)"> Cancelada por Vendedor</button>
+    <button (click)="GetNewStatus(_ListBuyService._movementType.purchaseCancelledByAdmin)"> Compra cancelada por administrador</button>
+  </div>
+
+
+
+  <div class="scroll">
+    <div class="container-prices-general">
+      <div class="product-container">
+        @if(_ListBuyService._listProduct !=undefined){
+
+        @for (group of _ListBuyService._listBuyGroupByIdBuy ; track group) {
+
+        @for (item of GetGroup(_ListBuyService._listProduct, group ) ; track item.id) {
+        <div class="item-buy">
+          <div class="header-item">
+            <div class="item-ico">
+              <img class="img-ico" src="{{GetUrlImg(item,'PHONE')}}" />
+            </div>
+            <p>{{item.name}}</p>
+          </div>
+          @if(this.idBuySelectDetail == item.id){
+
+          <div class="detail-status">
+            <div class="status" [ngClass]="{'gray':item.statusMovementItem!='Compra en verificación'}">
+              <p> Nombre :</p>
+            </div>
+
+
+          </div>
+
+          <div class="detail-status">
+            <div class="status" [ngClass]="{'gray':item.statusMovementItem!=_ListBuyService._movementType.purchaseGenerated}">
+              <button (click)="ChangedStatus(item.id, _ListBuyService._movementType.purchaseGenerated)" class="status-btn">1</button> Compra en validación
+            </div>
+            <div class="status" [ngClass]="{'gray':item.statusMovementItem!=_ListBuyService._movementType.purchaseInProcess}">
+              <button (click)="ChangedStatus(item.id,_ListBuyService._movementType.purchaseInProcess)" class="status-btn">2</button> Compra en alistamiento
+            </div>
+            <div class="status" [ngClass]="{'gray':item.statusMovementItem!=_ListBuyService._movementType.purchaseInDelivery}">
+              <button (click)="ChangedStatus(item.id,_ListBuyService._movementType.purchaseInDelivery)" class="status-btn">3</button> Compra en reparto o lista para recogida
+            </div>
+            <div class="status" [ngClass]="{'gray':item.statusMovementItem!=_ListBuyService._movementType.purchaseCompleted}">
+              <button (click)="ChangedStatus(item.id,_ListBuyService._movementType.purchaseCompleted)" class="status-btn">4</button> Compra en entregada
+            </div>
+            <div class="status" [ngClass]="{'gray':item.statusMovementItem!=_ListBuyService._movementType.purchaseCancelledByCustomer}">
+              <button class="status-btn">4</button> Compra cancelada por cliente
+            </div>
+            <div class="status" [ngClass]="{'gray':item.statusMovementItem!=_ListBuyService._movementType.purchaseCancelledByVendor}">
+              <button class="status-btn">4</button> Compra cancelada por vendedor
+            </div>
+            <div class="status" [ngClass]="{'gray':item.statusMovementItem!=_ListBuyService._movementType.purchaseCancelledByAdmin}">
+              <button class="status-btn" (click)="ChangedStatus(item.id,_ListBuyService._movementType.purchaseCancelledByAdmin)">4</button> Compra cancelada por administrador
+            </div>
+
+
+          </div>
+          }
+          <div class="btn-menu">
+            <button (click)="SetPhoneNumber(item)" class="item-menu"><i class="bi bi-whatsapp"></i></button>
+            @if(item.statusMovementItem==_ListBuyService._movementType.purchaseCancelledByAdmin || item.statusMovementItem==_ListBuyService._movementType.purchaseCancelledByCustomer || item.statusMovementItem==_ListBuyService._movementType.purchaseCancelledByVendor){
+            <button (click)="Delete(item.id)" class="btn-item-menu cancel">Eliminar <i class="bi bi-x-circle"></i> </button>
+            }@else{
+            <button (click)="CancelBuy(item.id)" class="btn-item-menu cancel">Cancelar <i class="bi bi-x-circle"></i> </button>
+            }
+            <button (click)="SelectedDetail(item.id)" class="btn-item-menu delete">Detalle <i class="bi bi-caret-down-fill"></i></button>
+
+          </div>
+        </div>
+        }
+
+        <p class="total">{{GetGroupPrice(_ListBuyService._listProduct, group )}}</p>
+
+
+        }
+
+
+        }@else{
+
+        <p class="title">No tienes compras realizadas</p>
+        }
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</app-permission>
+

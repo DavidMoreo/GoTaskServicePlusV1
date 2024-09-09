@@ -1,0 +1,56 @@
+@if(_Service.GetActive()){
+<div i class="contaioner-share">
+  <div class="menu-float">
+    <button class="btn-menu" (click)="_Service.ClearShare()"><i class="bi bi-x-circle"></i> Salir</button>
+
+    @if(!this._Share.shareActive){
+    <button class="btn-menu" (click)="_Service.Share()"><i class="bi bi-share-fill"></i> Compartir </button>
+    }@else{
+    <button class="btn-menu"><i class="bi bi-arrow-clockwise"></i> </button>
+    }
+  </div>
+
+  <div id="share-product" class="item-share">
+
+
+    <img id="img-share" [src]="_Service.GetSrcImg()" />
+    <!--<img class="img-share-company" src="/assets/logo.png" />-->
+    <img class="img-share-company-gift" src="/assets/moño.png" />
+    <div class="float-company">
+      <div class="title-company">
+        GOTASKSERVICE.COM
+      </div>
+    </div>
+    <div class="detail">
+
+      <div class="title-name">
+        {{_Service.product.name}}
+      </div>
+
+      <div class="title-price">
+        @if(IsService(this._Service.product)){
+        <p class="fon-size-12 text-align-center color-white">
+          {{ this._Service.product.priceString}}
+        </p>
+        }@else{
+        <p class="fon-size-12 text-align-center color-white">
+          Servicio
+        </p>
+        }
+
+        @if(_Service.product.adress){
+
+        <p class="fon-size-12 text-align-center color-white">{{_Service.product.adress.concept !=undefined ? _Service.product.adress.concept.name:""}}</p>
+
+        }
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>
+}
+<!--<app-common-loading [active]="GetListNull()"></app-common-loading>-->

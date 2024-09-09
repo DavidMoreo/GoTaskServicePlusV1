@@ -1,0 +1,30 @@
+
+<div class="menu-item-product">
+  <div class="container-item-product position-relative" >
+    <div class="img-continer">
+      <!--(click)="SelctProduct(product)"-->
+      <img class="img-product" src="{{ GetUrlImg(product.ico,product.idCompany,'PHONE')}}" [alt]="product.name" [title]="product.name" (onerror)="ImgError()" />
+
+      <b class="width name height">{{product.name}}</b>
+    </div>
+    <div class="div-prices">
+      <b class=" price height">{{GetPriceString(product.salePrice)}}</b>
+    </div>
+    <div class="menu-item">
+      <button class="delete" (click)="DeleteBuyCart(product.id)" ><i class="bi bi-trash"></i></button>
+      <!--<div class="menu-item-quantity">
+        <div class="quantity">
+          # {{GetQuantity(product.id)}}
+        </div>
+        <button  class="menu-add"  (click)="QuantityProduct(false,product.id )" ><i class="bi bi-caret-down"></i></button>
+        <button  class="menu-add" (click)="QuantityProduct(true,product.id )" ><i class="bi bi-caret-up-fill"></i></button>
+      </div>-->
+    
+    </div>
+  </div>
+
+</div>
+
+
+
+

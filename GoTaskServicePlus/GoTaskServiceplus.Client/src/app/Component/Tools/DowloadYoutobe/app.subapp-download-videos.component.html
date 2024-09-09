@@ -1,0 +1,63 @@
+
+<app-common-loading ></app-common-loading>
+
+
+
+
+
+<div class="conatiner-speechText">
+
+  <div id="container-text-to-speech">
+    <!--<h1 class="title">Descarga videos en liena</h1>-->
+
+    <textarea #texValue [ngModel]="_extractedText" id="text-input" placeholder="Escribe la URL..."></textarea>
+    <br>
+    <br>
+    <div class="coniner-flex">
+
+      <button (click)="getInfoVideo(texValue.value)" class="btn"><i class="bi bi-search"></i></button>
+
+    </div>
+    @if(_titleVideo!=undefined &&  this._titleVideo.length>0 ){
+    <div class="item-title">
+      <h4> {{_titleVideo}} VIDEO:</h4>
+      <button (click)="dowloadVideoPartial(texValue.value,'mp4')" class="btn"><i class="bi bi-filetype-mp4"></i></button>
+    </div>
+    }
+    <br />
+
+ 
+
+    @if(_titleVideo!=undefined &&  this._titleVideo.length>0 ){
+    <div class="item-title">
+      <h4> {{_titleVideo}} AUDIO:  </h4>
+      <button (click)="dowloadVideoPartial(texValue.value,'mp3')" class="btn"><i class="bi bi-filetype-mp3"></i></button>
+    </div>
+    }
+
+  </div>
+
+
+  <!--<div *ngIf="listMemory.length>0" class="list-memory">
+
+    <div *ngFor="let item of listMemory" class="item-memory">
+      <div (click)="SelectionMemory(item.name)">
+        <p>
+          {{item.name}}
+        </p>
+      </div>
+      <button (click)="DeleteMemory(item.name)" class="delete-memory"><i class="bi bi-trash-fill"></i></button>
+    </div>
+
+
+  </div>-->
+
+
+
+</div>
+
+<!--<div *ngif="_visible==0">-->
+<!--<speech-ia></speech-ia>-->
+<!--<apps></apps>-->
+<!--</div>-->
+<!--accept=".pdf"-->

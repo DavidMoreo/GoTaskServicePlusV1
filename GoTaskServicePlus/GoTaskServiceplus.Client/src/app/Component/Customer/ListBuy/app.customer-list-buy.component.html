@@ -1,0 +1,83 @@
+<!--<h1 class="title margin-top ">Productos</h1>-->
+<!--<app-common-loading></app-common-loading>-->
+
+<div class="scroll">
+  <div class="container-prices-general">
+    <div class="product-container">
+
+
+
+      @if(!GetExistPurcchare()){
+
+
+      @for (group of GetGroup() ; track group) {
+    
+      @for (item of GetGroupList(group) ; track item.id) {
+      <div class="item-buy">
+        <div class="header-item">
+          <div class="item-ico">
+            <img class="img-ico" src="{{GetUrlImg(item,'PHONE')}}" />
+          </div>
+          <p>{{item.name}}</p>
+        </div>
+        <div class="detail-status" style="display:none;" #detail>
+          <div class="status" [ngClass]="{'gray':item.statusMovementItem!=this._movementType.purchaseGenerated}">
+            <button class="status-btn">1</button> Compra en validación
+          </div>
+          <div class="status" [ngClass]="{'gray':item.statusMovementItem!= this._movementType.purchaseInProcess}">
+            <button class="status-btn">2</button> Compra en alistamiento
+          </div>
+          <div class="status" [ngClass]="{'gray':item.statusMovementItem!=this._movementType.purchaseInDelivery}">
+            <button class="status-btn">3</button> Ya puedes reclamar tu compra
+          </div>
+          <!--@if(item.statusMovementItem==this._movementType.purchaseInDelivery){
+        <div class="datail-purchase">
+          <b>Ciudad</b>
+          @for (cityItem of  item.city  ; track cityItem.value) {
+          <p>Pendiente</p>
+          }
+          <b>Ubicacion en Google</b>
+          <a href="{{item.gps}}" target="_blank">
+            <button class="gps"><i class="bi bi-geo-alt-fill"></i></button>
+          </a>
+          <b>Nombre de la tienda</b>
+          <p>{{item.conceptCompany.name}}</p>
+          <b>Horario disponible para recogida:</b>
+      <p>Pendiente...</p>
+        </div>
+        }-->
+          <div class="status" [ngClass]="{'gray':item.statusMovementItem!='Compra entregada'}">
+            <button class="status-btn">4</button> Compra en entregada
+          </div>
+        </div>
+        <div class="btn-menu">
+          <button class="btn-item-menu ok" (click)="loadData()">Recargar <i class="bi bi-arrow-clockwise"></i></button>
+          <!--<button class="btn-item-menu cancel" (click)="CancelBuy(item.id)">Cancelar <i class="bi bi-x-circle"></i> </button>-->
+          <button (click)="detail.style.display == 'none' ? detail.style.display='flex' : detail.style.display='none'" class="btn-item-menu ok">Detalle <i class="bi bi-caret-down-fill"></i></button>
+
+        </div>
+      </div>
+      }
+
+      <p class="total">{{GetGroupPrice( group )}}</p>
+      }
+      }
+
+
+
+
+
+    </div>
+
+  </div>
+  <div class="margin"></div>
+</div>
+
+   @if(GetExistPurcchare() ){
+<p class="title-msg">No tienes compras realizadas</p>
+   }
+
+<!--<app-customer-buy-product></app-customer-buy-product>-->
+<app-menu-phone></app-menu-phone>
+<app-common-loading [active]="_ListBuyService.GetListNull()"></app-common-loading>
+

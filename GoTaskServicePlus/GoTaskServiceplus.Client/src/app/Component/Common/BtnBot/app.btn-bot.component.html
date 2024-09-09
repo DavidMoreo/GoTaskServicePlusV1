@@ -1,0 +1,30 @@
+
+
+
+
+
+@if(mode){
+<div class="btn-chat btn-chat-off">
+  <a href="https://api.whatsapp.com/send?phone=573138740424&text=Estoy%20interesado%20en%20sus%20productos" target="_blank">
+      <button class="btn" ><i class="bi bi-chat-left-dots-fill"></i></button>
+  </a>
+</div>
+}@else{
+<div class="btn-chat btn-chat-on">
+  <a href="https://api.whatsapp.com/send?phone=573138740424&text=Estoy%20interesado%20en%20sus%20productos" target="_blank">
+    <button class="btn"><i class="bi bi-chat-left-dots-fill"></i></button>
+  </a>
+</div>
+}
+
+
+
+<!--@if(mode){
+<div class="btn-chat btn-chat-off">
+  <button class="btn" (click)="Route('chat-bot')"><i class="bi bi-chat-left-dots-fill"></i></button>
+</div>
+}@else{
+<div class="btn-chat btn-chat-on">
+  <button class="btn" (click)="Route('chat-bot')"><i class="bi bi-chat-left-dots-fill"></i></button>
+</div>
+}-->

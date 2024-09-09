@@ -1,0 +1,72 @@
+
+<div class="loging-container">
+
+
+
+
+  <div class="loging-container-item">
+    <p>  {{languageTraslate("Disponible actualmente en Colombia")}}</p>
+    <br />
+    <div>
+      <p class="text-form text-style color-white">
+        <b class="color-white">{{languageTraslate("Numero de WhatsApp")}}</b>
+        <input type="email" name="email" [(ngModel)]="loginData.email" />
+      </p>
+    </div>
+    <br />
+    <div>
+      <p class="text-form text-style  color-white">
+        <b class="color-white">
+          {{languageTraslate("Clave")}}
+        </b>
+        <b class="login">
+          <input [type]="eyePassword" name="password" id="typePasswordX" [(ngModel)]="loginData.password" />
+          @if(eyePassword=='text'){
+          <button (click)="changedEye('password')"><i class="bi bi-eye-slash"></i></button>
+          }@else{
+          <button (click)="changedEye('text')"><i class="bi bi-eye-fill"></i></button>
+          }
+        </b>
+      </p>
+
+
+    </div>
+
+
+
+    <button class="btn btn-outline-light btn-lg px-5" type="submit" (click)="changedLogin()">Login</button>
+
+    <div class="d-flex justify-content-center text-center mt-4 pt-1">
+      <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+      <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+      <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+    </div>
+
+
+
+    <div>
+      <br />
+      <p class="mb-0">
+        {{languageTraslate("No tienes una cuenta")}}
+        <button class="buttonMenu box-shadow-btn text-shadow" (click)="_route.navigate(['/register-user'])">
+          {{languageTraslate("Registro")}}
+        </button>
+      </p>
+      <br />
+      <p><a class="btn-pasword" href="changed-password-user">    {{languageTraslate("Recuperar clave")}}</a></p>
+    </div>
+    <div class="btn-chat">
+      <a href="https://api.whatsapp.com/send?phone=573138740424&text=Estoy%20interesado%20en%20sus%20productos" target="_blank">
+        <button>
+          Comunicarme directamente con la tienda <i class="bi bi-chat-dots-fill"></i>
+        </button>
+      </a>
+
+
+    </div>
+    <button (click)="searchProduct('select-product-search/all')" class="btn">Ver todos los productos</button>
+  </div>
+</div>
+<!--<div *ngIf="modeLoginRegister">
+  <app-login-register></app-login-register>
+</div>-->

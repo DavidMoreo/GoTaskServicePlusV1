@@ -1,0 +1,120 @@
+<header>
+
+
+  <div class="nav-div-container">
+
+    <div class="container-nav">
+      <div class="container-logo text-shadow box-shadow-btn ">
+        <b (click)="toggle(false)">{{GetNameProject()}}</b>
+      </div>
+
+     
+      <div class="item-search">
+        <input #imputSearch (keyup.enter)="searchProductValue('select-product-search/')" type="text" placeholder="Nombre de producto" aria-label="Nombre de producto" name="productName" aria-describedby="button-addon2" (input)="OnchangeInputSearch($event)" >
+        <button (click)="searchProductValue('select-product-search/')">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+      <div class="item-menu">
+        <a routerLink="home-menu" (click)="toggle(false)">
+          <button class="buttonMenu-up box-shadow-btn ">
+            <i class="bi bi-grid-3x3-gap-fill"></i>
+          </button>
+        </a>
+        <a routerLink="home" (click)="toggle(false)">
+          <button class="buttonMenu-up box-shadow-btn ">
+            <i class="bi bi-house"></i>
+          </button>
+        </a>
+      </div>
+
+     
+      <!--[routerLink]="['/Home']"-->
+
+
+      <button (click)="toggle(true)" class=" box-shadow-btn btn-expand" [ngClass]="{'expand-off':isExpanded,'expand-on':isExpanded===false, 'visible-on':isExpanded===true}"><i class="bi bi-caret-down-fill"></i></button>
+      <button (click)="toggle(false)" class=" box-shadow-btn btn-expand" [ngClass]="{'expand-off':isExpanded,'expand-on':isExpanded===false, 'visible-off':isExpanded===false}"><i class="bi bi-caret-up-fill"></i></button>
+
+    </div>
+
+    <div class="nav-sub-menu" [ngClass]="{'nav-on':isExpanded,'nav-off':isExpanded===false}">
+      <div class="sub-menu-item">
+
+        <!--@if(true){
+  <button *ngIf="!_LoginStatus" class="buttonMenu box-shadow-btn text-shadow" [routerLink]="['/Login']">
+    Ingresa
+  </button>
+  }-->
+        @if(GetNameUser()!=""){
+        <div class="flex-name  ">
+          <div class="container-name  ">
+            <p>Sucursal:<br /> {{GetNameProject()}}</p>
+            <p>User: <br /> {{GetNameUser()}}</p>
+          </div>
+        </div>
+        }
+
+        <!--<a routerLink="chat-bot" (click)="toggle(false)" class="buttonMenu buttonMenu-width box-shadow-btn text-shadow">
+          <i class="bi bi-chat-square-dots-fill"></i> <p> Chat bot </p>
+        </a>-->
+
+     
+        <a routerLink="user-favorite" (click)="toggle(false)" class="buttonMenu buttonMenu-width box-shadow-btn text-shadow">
+          <i class="bi bi-heart-fill"></i> <p> Fovoritos </p>
+        </a>
+
+        <a routerLink="product-cart" (click)="toggle(false)" class="buttonMenu buttonMenu-width box-shadow-btn text-shadow">
+          <i class="bi bi-cart4"></i> <p> Mis carrito </p>
+        </a>
+
+        <a routerLink="product-buy" (click)="toggle(false)" class="buttonMenu buttonMenu-width box-shadow-btn text-shadow">
+          <i class="bi bi-bag-fill"></i> <p> Mis Compras </p>
+        </a>
+
+
+
+        @if(GetStatusLogin()){
+        <a (click)="toggleCloseSession()" class="buttonMenu box-shadow-btn text-shadow">
+          <i class="bi bi-lock-fill"></i>  <p> Cerrar sesión</p>
+        </a>
+        }
+        @else{
+
+        <a routerLink="register-user" (click)="toggle()" class="buttonMenu box-shadow-btn text-shadow">
+          <i class="bi bi-person-add"></i> Crear cuenta 
+        </a>
+         
+        <a routerLink="login" (click)="toggle(false)" class="buttonMenu box-shadow-btn text-shadow">
+          <i class="bi bi-key-fill"></i> <p>Iniciar sesión</p>
+        </a>
+        }
+        <a routerLink="tools" (click)="toggle(false)" class="buttonMenu buttonMenu-width box-shadow-btn text-shadow">
+          <i class="bi bi-columns-gap"></i> <p>Herramientas</p>
+        </a>
+
+
+
+
+        <!--<a href="{{_configservice.GetBaseUrl()}}tools" (click)="toggle(false)" class="buttonMenu buttonMenu-width box-shadow-btn text-shadow">
+    Más herramientas
+  </a>-->
+        <!--<a href="{{_configservice.GetBaseUrl()}}add-product" (click)="toggle()" class="buttonMenu box-shadow-btn text-shadow">
+    Agregar Producto
+  </a>
+  <a href="{{_configservice.GetBaseUrl()}}select-product" (click)="toggle()" class="buttonMenu box-shadow-btn text-shadow">
+    seleccion de Producto
+  </a>
+  <a href="{{_configservice.GetBaseUrl()}}conceptual-product" (click)="toggle()" class="buttonMenu box-shadow-btn text-shadow">
+    concepto
+  </a>
+  <a href="{{_configservice.GetBaseUrl()}}customer-concept" (click)="toggle()" class="buttonMenu box-shadow-btn text-shadow">
+    customer-concept
+  </a>-->
+
+
+      </div>
+    </div>
+
+  </div>
+
+</header>

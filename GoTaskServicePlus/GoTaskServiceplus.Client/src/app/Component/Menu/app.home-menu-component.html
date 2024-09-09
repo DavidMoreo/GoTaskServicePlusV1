@@ -1,0 +1,74 @@
+<app-permission [enable]="false" page="Menu">
+
+
+  <div class="title-menu">
+    <p>Disponibles</p>
+  </div>
+  <div class="container-menu">
+    @for (item of LoadMenuCustomer(); track item.id)
+    {
+    <div class="item-menu-container" (click)="Route(item.route)">
+      <div class="ico">
+        <i class="bi bi-{{item.ico}}"></i>
+      </div>
+      <div class="text">
+        <b>{{item.title}}</b>
+        <p> {{item.description}}</p>
+      </div>
+    </div>
+    }
+  </div>
+  <br />
+  <br />
+
+
+
+
+  <div class="title-menu">
+    <p>Vendedor</p>
+  </div>
+
+  <div class="container-menu">
+    @for (item of  LoadMenuVenndor(); track item.id)
+    {
+    <div class="item-menu-container" (click)="Route(item.route)">
+      <div class="ico">
+        <i class="bi bi-{{item.ico}}"></i>
+      </div>
+      <div class="text">
+        <b>{{item.title}}</b>
+        <p> {{item.description}}</p>
+      </div>
+    </div>
+    }
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="title-menu">
+    <p>Administrar</p>
+  </div>
+
+  <div class="container-menu">
+    @for (item of LoadMenuAdmin(); track item.id)
+    {
+    <div class="item-menu-container" (click)="Route(item.route)">
+      <div class="ico">
+        <i class="bi bi-{{item.ico}}"></i>
+      </div>
+      <div class="text">
+        <b>{{item.title}}</b>
+        <p> {{item.description}}</p>
+      </div>
+    </div>
+    }
+  </div>
+  <div class="margin-scroll"></div>
+</app-permission>

@@ -1,0 +1,99 @@
+<!--<loading *ngIf="visibleLoading"></loading>-->
+
+
+<div class="horizontal-container">
+
+
+  <div class="container-general-chat">
+
+    <div class="container-chat">
+
+      @if(_item.languageModeFrom!=""){
+
+      <div class=" container-item-direction-user ">
+
+        <div class=" container-item  user">
+          <div class="logo-user">
+            Speaking and listening
+          </div>
+
+          <div class="language-bot language">
+            {{_item.languageModeFrom}}:
+            {{_item.languageFrom}}
+          </div>
+
+          <div class="item text">
+            {{_item.languageModeFor}}:
+            {{_item.languageFor}}
+          </div>
+
+
+
+          <div id="menu">
+            @if(!isUserSpeaking){
+            <button (click)="startRecording()"><i class="bi bi-mic-fill"></i></button>
+            }
+            @if(isUserSpeaking){
+            <button><i class="bi bi-mic-mute" (click)="stopRecording()"></i></button>
+            }
+            <button (click)="speech(_item.languageFor)">play</button>
+          </div>
+        </div>
+
+
+      </div>
+
+      }
+    </div>
+
+    <div class="btn-go-page">
+      <button ><i class="bi bi-skip-backward-fill" (click)="pageGo('-')"></i></button>
+      @if(_counPage>0){
+      <button  (click)="pageGoClear()"><i class="bi bi-0-circle"></i></button>
+      }
+      <button   ><i class="bi bi-skip-forward-fill" (click)="pageGo('+')"></i></button>
+    </div>
+
+
+    <div #viewMenu class="config-chat" style="display:none;">
+      <button class="btn-menu" (click)="viewMenu.style.display =  'none'">
+        <i class="bi bi-caret-down-fill"></i>
+      </button>
+      <div class="item-label">
+        <label>Idioma</label>
+
+        <select (click)="onSelectChange($event)" class="select-item select" (change)="onSelectChange($event)">
+          <option>Seleccionar</option>
+          @for( voice of _listVoiceView; track voice.id){
+          <option [value]="voice.name">{{voice.name}}</option>
+          }
+        </select>
+
+      </div>
+    </div>
+
+
+    @if(viewMenu.style.display=='none'){
+    <button class="btn-menu-close" (click)="viewMenu.style.display =  'block'">
+      <i class="bi bi-caret-up-fill"></i>
+    </button>
+    }
+
+    @if(isUserSpeaking){
+    <div class="text-recognition">
+      <p>{{_textrecognition}}</p>
+    </div>
+    }
+
+  </div>
+
+
+  <!--<div>
+    @if(_ItemLanguage!=undefined && _ItemLanguage.ListLanguageText!=undefined){
+    @for(item of _ItemLanguage.ListLanguageText; track item.id ){
+    <div>{{item.id}}</div>
+    }
+    }
+  </div>-->
+
+</div>

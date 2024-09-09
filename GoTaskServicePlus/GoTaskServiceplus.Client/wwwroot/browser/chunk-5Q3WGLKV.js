@@ -1,0 +1,1 @@
+import{Da as s}from"./chunk-EYTT7SII.js";var t=class{},e=class extends s{constructor(){super(...arguments),this.destinationId="00000000-0000-0000-0000-000000000000",this.idProduct="00000000-0000-0000-0000-000000000000",this.question="",this.response="",this.isBot=!1,this.isConcept=!1,this.typeQuestion=""}};export{t as a,e as b};

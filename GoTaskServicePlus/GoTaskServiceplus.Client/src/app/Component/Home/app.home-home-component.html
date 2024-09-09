@@ -1,0 +1,86 @@
+<!--<app-common-alert msg="{{_msg}}"></app-common-alert>-->
+<app-permission [enable]="false" page="home" scrollName="scrollAuto">
+
+  <!--<app-common-loading></app-common-loading>-->
+
+  <div class="container-vertical  row-gap">
+
+
+    <div class="container-nav">
+      <img src="/assets/logo.png">
+      <div class="banner">
+        <h2>¡Apoya tu comunidad!</h2>
+        <p>Compra productos locales y contribuye al crecimiento de tu ciudad.</p>
+        <button (click)="searchProduct('select-product-search/all')" class="btn">Ver todos los productos</button>
+      </div>
+      <!--<div>-->
+      <!--<p>
+      <b class="shado-item">➧</b> Compra productos de tu misma ciudad o municipio.
+    </p>-->
+      <!--<p class="calendar">
+      <button><i class="bi bi-calendar-event"></i> <img id="img-bot" src="{{_configservice.GetHostApi()}}Img/bot.gif" />  </button>
+    </p>-->
+      <!--</div>-->
+    </div>
+
+
+    <!--<div class="slider-container">-->
+    <!--@if(GetVisible(0) || true){
+  <div class="container-slider-item">
+    <div class="item-slider-1 focus">-->
+    <!--<img src="{{_configservice.GetHostApi()}}Img/slider/slider-1.jpg" />-->
+    <!--<img src="https://http2.mlstatic.com/D_NQ_731836-MLA73878417587_012024-OO.webp" alt="Alternate Text" />
+    </div>
+
+  </div>
+  }-->
+    <!--<div class="item-slider-2 focus">
+    <h2 class="h2-slider">Nombre del producto</h2>
+    <p class="p-slider">Encunetra mas clientes en tu mismo sector</p>
+  </div>-->
+    <!--</div>-->
+
+    <div>
+      <app-common-scroll-info></app-common-scroll-info>
+    </div>
+
+    <app-product-list-product></app-product-list-product>
+
+
+    <div class="footer">
+
+      <div class="footer-item" >
+        <p>
+          Somos GotaskService.com
+        </p>
+        <p>✔ Le ayudamos a vender sus productos y no debes pagar nada.</p>
+        <p>✔ Simplemente buscamos llegar a mas tiendas en cada ciudad</p>
+        <p>✔¿Por qué no pagas nada? Ya nos estás pagando generando productos atractivos para los clientes.</p>
+        <a href="https://api.whatsapp.com/send?phone=573138740424&text=Quiero Publicar mis productos" target="_blank">
+          <b>Quiero Publicar mis productos     </b>
+        </a>
+      </div>
+
+
+    </div>
+
+
+    <!--</div>-->
+  </div>
+
+
+
+
+
+
+
+  <!--<p class="container">{{ this._Permission.counter}}</p>-->
+
+
+
+ 
+
+
+
+</app-permission>
+<app-menu-phone></app-menu-phone>

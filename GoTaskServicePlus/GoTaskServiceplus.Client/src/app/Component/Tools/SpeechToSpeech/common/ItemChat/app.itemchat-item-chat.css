@@ -1,0 +1,125 @@
+.container-item-direction-user {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.container-item {
+  background-color: navy;
+  min-height: 10px;
+  padding: 0px 0px 4px 0px;
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  max-width: 50%;
+  box-shadow: 0px 0px 5px black;
+}
+
+
+.user {
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  position: relative;
+}
+
+
+.logo-user {
+  top: -20px;
+  right: -20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  position: absolute;
+  color: black;
+  box-shadow: 0px 0px 5px black;
+}
+
+.logo-bot {
+  top: -20px;
+  left: -20px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  color: black;
+  box-shadow: 0px 0px 5px black;
+}
+
+
+.language {
+  color: black;
+  margin-bottom: 5px;
+  padding: 5px;
+  box-shadow: 0px 0px 5px black inset;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+
+
+
+.language-user {
+  color: #6796f3;
+}
+
+
+
+
+.language-bot {
+  color: #bfffc857;
+}
+
+
+.text {
+  font-size: 16px;
+  margin: 5px;
+  color: white;
+}
+
+#menu {
+  width: 100%;
+  bottom: -5px;
+  flex-direction: row-reverse;
+  justify-items: end;
+  align-content: end;
+  background-color: none;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap:5px;
+  column-gap:5px;
+}
+
+  #menu button {
+    padding: 0px;
+    margin: 0px;
+  
+    right: 0px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+.container-item-direction-bot {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.bot {
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  position: relative;
+}
+
+

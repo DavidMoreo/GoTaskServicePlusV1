@@ -1,0 +1,27 @@
+<div class="scroll">
+  <div class="div-filter">
+
+    <div class="btn-page">
+      <button (click)="GoBackPageAction()" class="btn-search" ><i class="bi bi-caret-left-fill"></i></button>
+      <button (click)="GoPageAction()" class="btn-search"><i class="bi bi-caret-right-fill"></i></button>
+      <button class="btn-search">
+        Página : {{page}}
+      </button>
+    </div>
+
+
+    <div class="item-filter">
+      <input [(ngModel)]="filterValue" /> <button (click)="FilterChanged()" class="btn-search">Buscar</button>
+      <button (click)="FilterChangeCancel()" class="btn-search"><i class="bi bi-arrow-clockwise"></i></button>
+    </div>
+  </div>
+  <div class="container-concep" [ngStyle]="{'grid-template-columns': 'repeat(' + columns + ', 1fr)'}">
+    @for(item of _Service.dataHeader; track item.id ){
+    <div class="div-header">
+      {{item.value}}
+    </div>
+    }
+    <ng-content></ng-content>
+
+  </div>
+</div>

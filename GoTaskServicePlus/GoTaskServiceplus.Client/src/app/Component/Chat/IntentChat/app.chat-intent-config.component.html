@@ -1,0 +1,74 @@
+
+
+<div>
+  <div class="container-input">
+    <p class="text-form">
+      {{languageTraslate("Pregunta")}}
+
+      <app-common-input-text [value]="intent.question"
+                             [width]="'198px'"
+                             (EventChanged)="ChangedMsgIntent($event)"
+                             [isRequired]="true"
+                             [nameId]="'questionId'"
+                             textTransfor="'uppercase'"></app-common-input-text>
+    </p>
+    <p class="text-form">
+      {{languageTraslate("Intención")}}
+      <app-common-input-select [value]="intent.intent"
+                               [isRequired]="true"
+                               [nameId]="'type_intent'"
+                               (EventChanged)="ChangedTypeIntent($event)"
+                               [list]="LoadTypeIntent()"></app-common-input-select>
+    </p>
+  </div>
+
+
+
+
+  <div class="btn-scroll">
+    @if(true){
+    <button (click)="SaveAndUpdate()"><i class="bi bi-floppy2-fill"></i></button>
+    }
+  </div>
+
+
+
+
+</div>
+
+
+<app-common-custom-grid columns="2">
+
+  <div class="div-header">
+    Mensaje
+  </div>
+  <div class="div-header">
+    Intención
+  </div>
+
+
+  @for( item of  _chatBotIntentConfigService.GetAllIntentChat(); track item.id){
+
+  @if(_rowSeletion==item.id){
+  <div class="edit-visible">
+    <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+    <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+  </div>
+  }
+
+  <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+    {{item.question}}
+  </div>
+  <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+    {{item.intent}}
+  </div>
+
+  }
+
+
+
+</app-common-custom-grid>
+
+
+
+

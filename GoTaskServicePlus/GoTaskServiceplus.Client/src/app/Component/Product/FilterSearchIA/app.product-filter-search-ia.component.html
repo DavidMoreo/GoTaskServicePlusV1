@@ -1,0 +1,19 @@
+@if(this._Filter.isVisible){
+<div class="container-filter">
+  <div class="container-filter-item">
+    
+    <div class="div-scroll">
+      @for( item of _Filter.GetListFilter(); track item){
+      <div class="item-filter">
+        {{item}}
+        <button (click)="RemoveFilter(item)" >x</button>
+      </div>
+      }
+    </div>
+    <div class="container-input">
+      <input [(ngModel)]="textInput" class="tex-input" />
+      <button (click)="ClosePage()">Salir</button>  <button (click)="AgregateFilter()">agregar</button>
+    </div>
+  </div>
+</div>
+}

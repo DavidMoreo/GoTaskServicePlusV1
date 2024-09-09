@@ -1,0 +1,97 @@
+@if(_file.visible){
+<div #viewImages class="containe-file">
+  <!--<div class="container-img">
+    <img class="img-new" src="{{_configservice.GetHostApi()}}Files/Temp/{{fileName}}" />
+  </div>-->
+
+
+  <div class="input-url">
+
+    <p class="text-form">
+      Nombre
+      <input name="nameFile" (input)="onChangedName($event,'name')" [(ngModel)]="nameFile" />
+    </p>
+
+    <!--<p class="text-form">
+    Referencia
+    <input name="googleDriver" />
+  </p>-->
+
+    <div class="conatiner-tab">
+      <div class="tab-btn" [ngClass]="{'tab-select':_file.storageActive==0}">
+        <img (click)="TabMode(0)" class="img-ico-driver" src="{{_configservice.GetHostApi()}}/Img/ico/ico-drive.png" />
+      </div>
+      <div class="tab-btn" [ngClass]="{'tab-select':_file.storageActive==1}">
+        <img (click)="TabMode(1)" class="img-ico-storage" src="{{_configservice.GetHostApi()}}/Img/ico/storage.png" />
+      </div>
+      <div class="tab-btn" [ngClass]="{'tab-select':_file.storageActive==2}">
+        <img (click)="TabMode(2)" class="img-ico-storage" src="{{_configservice.GetHostApi()}}/Img/ico/img.png" />
+      </div>
+    </div>
+
+    @if(_file.storageActive==0){
+
+    <div class="container-url-img ">
+
+      <p class="text-form">
+        Alojamiento Google Drive
+
+        <input name="googleDriver" [value]="urlDriveFile" (input)="onChangedUrl($event,'google')" />
+      </p>
+    </div>
+    }
+
+    @if(_file.storageActive==1){
+
+    <div class="container-url-img ">
+
+      <p class="text-form">
+        Alojamiento publico
+
+        <input name="storge" [value]="urlStorageFile" (change)="onChangedUrl($event,'storage')" />
+      </p>
+    </div>
+    }
+
+
+    @if(_file.storageActive==2){
+    <div class="text-center ">
+
+      Solo 3 imagenes permitidas por producto<br />
+      @if(!_file.isLoding && (nameFile != undefined &&  nameFile.length > 5)){
+      <label for="file-input">
+        <b>Seleccionar</b>
+      </label>
+      <input (change)="onFileSelected($event)" id="file-input" type="file" accept=".png,.jpg,.webp,.jpeg" style="display:none;" multiple />
+      }
+      @else{
+      <b style="cursor:default;">Subir imagen</b>
+      }
+    </div>
+    }
+    @if(_file.isLoding){
+    <div class="text-center ">
+      <img class="loading-min" src="{{_configservice.GetHostApi()
+      }}Img/loading.gif" />
+      <button class="cancel-upload" (click)="CancelUpload()" >Cancelar</button>
+    </div>
+    }
+
+
+    <div class="btn-scroll">
+      <button class="close-btn"><i class="bi bi-house" (click)="setView()"></i></button>
+      @if(_file.isSave){
+      <button><i class="bi bi-floppy2-fill"></i></button>
+      }
+    </div>
+
+  </div>
+
+
+  @if(isExist && isNew){
+  <button class="btn-close">salir</button>
+  }
+</div>
+}
+
+

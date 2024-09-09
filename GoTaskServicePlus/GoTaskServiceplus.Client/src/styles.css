@@ -1,0 +1,623 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+
+
+
+html {
+  background-color: orangered; 
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  font-family:Arial;
+}
+
+p {
+  display: block;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-family: Arial;
+}
+
+a {
+  color: #0366d6;
+  font-family: Arial;
+}
+
+label {
+  font-family: Arial;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0px;
+  background-color: orangered;
+  /*padding-bottom: 100px;*/
+  margin:0px;
+}
+
+
+.scroll {
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ff4500;
+  /* margin-top: 40px; */
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.scroll-general {
+  overflow: hidden;
+  overflow-y: hidden;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ff4500;
+  /* margin-top: 40px; */
+  padding-bottom: 30px;
+  padding-top: 60px;
+}
+
+
+
+  .select-item {
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 5px white, 0px 0px 5px 1px white inset;
+    font-size: 14px;
+    width: 50%;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+
+.text-form{
+    width:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:start;
+    align-items:start;
+}
+
+select, input {
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 2px black inset;
+  padding: 4px;
+  width: 90%;
+  border: 1px solid white;
+}
+
+select {
+  width: 92%;
+  padding: 3px;
+  height: 26px;
+  font-family: Arial;
+  border: 1px solid white;
+}
+
+
+.title {
+  text-align: center;
+  text-shadow: -1px 0px 1px white;
+  font-size: 15px;
+}
+
+.container-vertical {
+  display: flex;
+  flex-direction: column; 
+  height: auto;
+  padding-bottom: 140px;
+}
+
+
+.scroll-info {
+  background-color: white;
+  min-width: 100vw;
+}
+
+@media (max-width: 468px) {
+
+  .scroll-info {
+    background-color: white;
+    min-width: 100vw;
+  }
+}
+
+
+.scroll-item {
+
+  background-color: wheat;
+  display: flex;
+  grid-template-columns: 1fr;
+  overflow: auto;
+  flex-direction: row;
+  align-items: center;
+  column-gap:5px;
+}
+
+
+
+@media (max-width: 468px) {
+
+  .scroll-item {  
+    background-color: wheat;
+    display: flex;
+    grid-template-columns: 1fr;
+    overflow: auto;
+    flex-direction: row;
+  }
+}
+
+.PC {
+  display: flex;
+}
+@media (max-width: 468px) {
+  .PC {
+      display:none;
+  }
+}
+
+.PHONE {
+  display: none;
+}
+
+@media (max-width: 468px) {
+  .PHONE {
+    display: block;
+  }
+}
+
+
+  .mobile-size-img {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    .mobile-size-img {
+      display: flex;
+    }
+  }
+
+  .pc-size-img {
+    display: flex;
+  }
+
+  @media (max-width: 480px) {
+    .pc-size-img {
+      display: none;
+    }
+  }
+
+
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .loading-image {
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    0%, 100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+
+  .loading-pointer {
+    height: 20px;
+    width: 25px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+
+  /*//Scroll*/
+
+
+
+  .scroll-container {
+    width: 100%; /* Ancho del contenedor */
+    white-space: nowrap; /* Evita que el contenido se divida en varias líneas */
+    overflow-x: auto; /* Permite el scroll horizontal */
+    animation: scrollRight 15s linear; /* Transición suave del scroll */
+  }
+
+    .scroll-container:hover {
+      animation-play-state: paused;
+    }
+
+
+
+
+
+  @keyframes scrollRight {
+    0% {
+      transform: translateX(0); /* Comenzamos sin desplazamiento */
+    }
+
+    50% {
+      transform: translateX(calc(-100% + 100vw)); /* Desplazamiento hacia la derecha */
+    }
+
+    100% {
+      transform: translateX(0); /* Desplazamiento hacia la derecha */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .disableInPhone {
+      display: none;
+    }
+  }
+
+
+
+
+
+  /*//Grid*/
+
+
+  .scroll-grid {
+    display: flex;
+    width: 99%;
+    padding: 5px;
+    background-color: dimgrey;
+    height: 400px;
+    justify-content: start;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 480px) {
+    .scroll-grid {
+      width: none;
+    }
+  }
+
+
+
+  .container-concep {
+    display: grid;
+    row-gap: 1px;
+    grid-template-columns: repeat(4,1fr);
+    background-color: red;
+    grid-template-rows: min-content;
+    width: 100%;
+    align-content: start;
+    overflow-y: auto;
+  }
+
+  .div-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border: 1px solid white;
+    height: 30px;
+    color: white;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+  }
+
+
+
+  .div-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    background-color: gray;
+    border: 1px solid white;
+    height: 30px;
+    color: white;
+    position: relative;
+    font-size: 10px;
+    padding: 5px;
+  }
+
+
+  @media (max-width: 480px) {
+
+    .div-item {
+      width: 300px;
+      font-size: 12px;
+    }
+
+    .div-item-image {
+      width: 50px;
+      
+    }
+  }
+
+.div-item-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  border: 1px solid white;
+  height: 30px;
+  color: white;
+  position: relative;
+  font-size: 10px;
+  padding: 5px;
+}
+
+
+
+
+.row-select {
+  background-color: green;
+}
+
+  .edit-visible {
+    position: fixed;
+    top: auto;
+    left: 0px;
+    background-color: darkslategray;
+    border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: auto;
+    box-shadow: 0px 0px 5px black;
+    row-gap: 5px;
+    bottom: 0px;
+    z-index: 2;
+    cursor:pointer;
+    
+  }
+
+    .edit-visible button {
+      height: 50px;
+      width: 50px;
+      color: white;
+      border-radius: 5px;
+      background-color: transparent;
+      box-shadow:0px 0px 0px ;
+      border:none;
+     
+      
+    }
+
+    .edit-visible .div-item {
+      background-color: #000;
+      border: 1px solid white;
+      height: 15px;
+      width: 100px;
+      color: #fff;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-radius: 5px;
+      font-size: 15px;
+      cursor:pointer;
+    }
+
+      .grad {
+        height: 30px;
+        width: 100%;
+        background-color: gray;
+        border: 1px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px black;
+        cursor:move;
+      }
+
+  .grad i {
+    font-size: 20px;
+    color: white;
+    text-shadow:-1px -1px 2px black;
+  }
+
+  .row-select {
+    background-color: green;
+  }
+  /*//Grid end*/
+
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+
+.cancel {
+  background-color: blue;
+}
+
+.delete {
+  background-color: red;
+}
+
+.ok {
+  background-color: green;
+}
+
+.title-msg{
+    position:absolute;
+    top:100px;
+    height:50px;
+    border-radius:5px ;
+    background-color:green;
+    box-shadow:0px 0px 5px black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+width:100vw;       
+}
+
+.fon-size-9 {
+  font-size: 9px;
+}
+
+.fon-size-10 {
+  font-size: 10px;
+}
+
+.fon-size-11{
+    font-size:11px;
+}
+
+.color-white {
+  color: white;
+}
+.color-green{
+    color:green;
+}
+
+.text-align-center {
+  text-align: initial;
+}
+
+
+h1,h2,h3 {
+  font-size: 14px;
+  color: white;
+  font-family: Arial;
+}
+
+.cursor-pointer{
+    cursor:pointer;
+}
+
+
+.footer {
+  height: 200px;
+  width: 100vw;
+  /*background-color: gray;*/
+  display: flex;
+  box-shadow: 0 0 5px black;
+  padding: 15px;
+  flex-direction: row;
+  justify-content:start;
+}
+
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  text-align: justify;
+  gap: 5px;
+  font-size: 12px;
+  color: white;
+  font-weight: normal;
+
+}
+
+@media (max-width: 480px) {
+ 
+}
+
+
+  .footer-item a {
+    color: white;
+    background-color: blue;
+    padding: 5px;
+    border-radius: 5px;
+    width: 190px;
+  }
+
+.text-align-center {
+  text-align: center;
+}
+
+
+.color-white{
+    color:white;
+}
+
+.color-red {
+  color: red;
+ 
+}
+
+.background-color-red-rgb {
+  background-color: rgb(255, 143, 143);
+}
+
+
+button {
+  border: none;
+}
+
+
+.background-color-blue {
+  background-color: blue;
+}
+
+.background-color-green {
+  background-color: green;
+}
+
+
+.ico {
+  height: 30px;
+  width: 30px;
+  border-radius:5px;
+  object-fit:contain;
+}
+
+.relative{
+    position:relative;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.active {
+  border: 1px solid white;
+  box-shadow: -1px 1px 2px 0px white, inset 0px 0px 8px white;
+}
+
+.disable {
+  border: none;
+  box-shadow: 0px 0px 2px 0px white;
+}

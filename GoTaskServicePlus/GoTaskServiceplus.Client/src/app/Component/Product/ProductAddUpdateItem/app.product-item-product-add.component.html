@@ -1,0 +1,63 @@
+
+
+<div class="menu-item-product">
+  <div class="container-item-product position-relative">
+
+
+    @if(!_productService._product.isPublic){
+    <i class="bi bi-eye-slash IsStatusVisible"></i>
+    }
+    <div class="img-continer">
+      <img class="img-product width mobile-size-img" src="{{ GetUrl(_productService._product.firsImg,'PC')}}" [alt]="product.name" [title]="product.name" (onerror)="ImgError()" />
+      <img class="img-product width pc-size-img" src="{{ GetUrl(_productService._product.firsImg,'PC')}}" [alt]="product.name" [title]="product.name" (onerror)="ImgError()" />
+    </div>
+    <b class="width name height">{{_productService._product.name}}</b>
+    <b class=" price height">{{_productService._product.priceString}}</b>
+
+    <div class="width border-end-start">
+      <p class="fon-size-12 text-center on-active">Disponible en</p>
+
+      @if(_productService._product.adress){
+     
+      <p class="text-center fon-size-12">{{_productService._product.adress.concept.name}}</p>
+      
+      }
+
+    </div>
+
+
+    @if( GeNameConcepVista( _productService._product.deliveryMode) !=""){
+    <p class="width  sub-title-info">{{_productService._product.deliveryMode.name}}</p>
+    }
+
+    @if(GeNameConcepVista(_productService._product.availableDay)!=""){
+    <p class="width  sub-title-info">{{_productService._product.availableDay.name}}</p>
+    }
+
+  </div>
+  <div class="div-menu">
+    <a href="https://api.whatsapp.com/send?phone=573228095355" target="_blank">
+      <button class="item-menu"><i class="bi bi-whatsapp"></i></button>
+    </a>
+    <button class="item-menu"><i class="bi bi-heart"></i></button>
+
+  </div>
+
+  <div class="display-available">
+    @if(_productService._product.quantity>0){
+    <div class="available on">
+      Disponible
+    </div>
+    }
+    @else{
+    <div class="available off">
+      No Disponible
+    </div>
+    }
+  </div>
+
+</div>
+
+
+
+

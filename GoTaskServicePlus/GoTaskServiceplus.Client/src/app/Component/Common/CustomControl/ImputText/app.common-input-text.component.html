@@ -1,0 +1,36 @@
+
+
+<div class="container-input-text">
+  @if(enable){
+  <input class="input"
+         [type]="typeInput"
+         name="nameId"
+         [ngModel]="GetValue()"
+         (input)="ChangedInput($event)"
+         (change)="Change($event)"
+         [ngClass]="{'background-color-red-rgb':(isRequired && (!value || value.length<=0) )}"
+         [minlength]="4"
+         [maxlength]="18"
+         [style]="{ 'text-transform': textTransform,'width':width}"
+         autocomplete="off" />
+  }@else{
+  <div class="input-label">
+    <label class="lavel-input">{{GetValue()}}</label>
+  </div>
+  }
+  @if(listFilter && listFilter.length>0 && IsActiveFilter()){
+  <div class="container-filter">
+    @for( value of listFilter; track value.id){
+    <div class="item" (click)="SelectAction(value)">
+      <button class="">{{value.name}}</button>
+    </div>
+    }
+  </div>
+  }@else if(IsActiveFilter() && enableFilter ){
+  <div class="container-filter">
+    <div class="item" (click)="SelectAction('0')">
+      <button class="0">{{listAllData.length}}No encontrado</button>
+    </div>
+  </div>
+  }
+</div>

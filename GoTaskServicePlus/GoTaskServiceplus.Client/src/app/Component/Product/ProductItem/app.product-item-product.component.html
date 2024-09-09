@@ -1,0 +1,98 @@
+
+
+<div [id]="product.id" class="menu-item-product " [ngClass]="{'PC':isPhone}">
+  <div class="container-item-product position-relative" (click)="SelctProduct(product)">
+
+
+
+    @if(product.status.value != "public"){
+    <i class="bi bi-eye-slash IsStatusVisible"></i>
+    }
+    @if(product.disable){
+    <i class="bi bi-clock-history IsStatusVisible disbale-item"></i>
+    }
+
+
+
+    <div class="img-continer">
+
+      <!--@if(isPhone){-->
+      <img class="img-product width mobile-size-img" src="{{ GetUrlImg(product.firsImg,'PHONE')}}" [alt]="product.name" [title]="product.name" (onerror)="ImgError()" loading="lazy" />
+      <!--}@else{-->
+      <img class="img-product width pc-size-img" src="{{ GetUrlImg(product.firsImg,'PC')}}" [alt]="product.name" [title]="product.name" (onerror)="ImgError()" loading="lazy" />
+      <!--}-->
+
+    </div>
+    <b class=" name height">{{product.name}}</b>
+    @if(IsService(product)){
+    <b class=" price height">{{product.priceString}}</b>
+    }
+    <div class="display-available">
+      @if(IsService(product)){
+      @if(GetTicket('inmediata')!=""){
+      <div class="available on">
+        <p class="PC"> {{GetTicket('inmediata')}} </p>
+        <p class="PHONE"> <i class="bi bi-lightning-charge-fill"></i></p>
+      </div>
+      }
+      }
+
+
+
+
+      <!--@if((product.quantity>0) && GetTicket('inmediata')!=""){
+      <div class="available on">
+        <p class="PC"> {{GetTicket('inmediata')}} </p>
+        <p class="PHONE"> <i class="bi bi-lightning-charge-fill"></i></p>
+      </div>
+      }
+      @if(!(product.quantity>0)){
+      <div class="available off">
+        No Disponible
+      </div>
+      }-->
+
+
+
+
+      <p class="distance"><i class="bi bi-person-walking"></i> {{distance}}</p>
+    </div>
+
+    <div class="width border-end-start">
+      <p class="fon-size-12 text-center on-active">Disponible en</p>
+      <p class="text-center fon-size-12">{{GetAdress(product.adress) }}</p>
+    </div>
+
+
+  </div>
+
+
+
+  <div class="div-menu">
+    <!--<a href="https://api.whatsapp.com/send?phone=573228095355&text={{product.name}}" target="_blank">-->
+    <button (click)="GetProjectId(this.product.idProject,product)" class="item-menu"><i class="bi bi-whatsapp"></i></button>
+    <button (click)=" ShareProduct(product,GetUrlProduct(product));" class="item-menu"><i class="bi bi-share"></i></button>
+    <!--</a>-->
+    @if(IsFavorite(product.id)){
+    <button (click)="FavoriteRemove(product.id)" class="item-menu"><i class="bi bi-heart-fill"></i></button>
+    }
+    @else{
+    <button (click)="FavoriteAdd(product)" class="item-menu"><i class="bi bi-heart"></i></button>
+    }
+
+    @if(IsService(product)){
+    @if(IsBuyCart(product.id)){
+    <button (click)="OpenCartAlert(product)" class="item-menu"><i class="bi bi-cart-fill"></i></button>
+    }
+    @else{
+    <button (click)="CartBuyAdd(product)" class="item-menu"><i class="bi bi-cart-plus"></i></button>
+    }
+    }
+
+  </div>
+
+
+</div>
+
+
+

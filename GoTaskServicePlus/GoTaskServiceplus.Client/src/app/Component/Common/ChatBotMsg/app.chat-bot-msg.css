@@ -1,0 +1,219 @@
+
+.chat-div {
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: stretch;
+  overflow:hidden;
+  /*padding-left:30px;
+padding-right:30px;*/
+ 
+}
+
+.item-response {
+
+  width: 100%;
+  height: auto;
+}
+
+  .item-response p {
+    padding: 5px;  
+    border-radius: 5px;
+    max-width:70%;
+    color: white;
+    text-shadow:0px 1px black;
+  }
+
+.msg-bot {
+ 
+
+}
+
+  .msg-bot p {
+    background-color: #233a1f;
+    border-radius: 0px 10px 10px 10px;
+  }
+
+.msg-user {
+  display: flex;
+  justify-content: end;
+  
+}
+
+  .msg-user p {
+    background-color: #0f9600;
+    border-radius: 10px 0px 10px 10px;
+  }
+
+
+
+.div-input-text {
+/*  background-color: black;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 5px;
+  background-color: dimgray;
+  padding: 4px;
+ /* width: 60%;*/
+}
+
+@media (max-width: 468px) {
+  .div-input-text {
+      width:70%;
+
+  }
+  }
+
+  .btn-mic {
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    background-color: white;
+    box-shadow: 0px 0px 5px black,0px 0px 3px black inset;
+    height: 46px;
+    width: 50px;
+  }
+
+
+.input-text {
+  background-color: white;
+  width: 100%;
+  height: 100px;
+  position: sticky;
+  bottom: 0px;
+  z-index: 1000;
+  padding: 5px;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0px 0px 5px black;
+  position: fixed;
+}
+
+  .div-container-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 70%;
+  }
+
+
+  .text {
+    width: 500px;
+    height: 40px;
+    border-radius: 5px 0px 0px 5px;
+    resize: none;
+  }
+
+
+  @media (max-width: 468px) {
+    .text {
+      width: 70%;
+      height: 40px;
+      border-radius: 5px 0px 0px 5px;
+    }
+  }
+
+
+
+
+  .btn-sent {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 5px black;
+    background-color: #717171;
+    color: white;
+    font-size: 20px;
+  }
+
+    .btn-sent i {
+      filter: drop-shadow(0px 1px 2px black);
+    }
+
+
+  .scroll-chat {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 8px;
+    overflow: hidden;
+    overflow-y: auto;
+    align-items:center;
+  }
+
+  .link {
+    color: white;
+    cursor: pointer;
+  }
+
+
+  .img-chat {
+    height: 60px;
+    width: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px black;
+    text-decoration: underline;
+  }
+
+.loading-pointer {
+  height: 30px;
+  width: 32px;
+  background-color: orangered;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px black inset;
+}
+
+.container-mic{
+    width:100vw;
+    height:80px;
+    position:fixed;
+    bottom:150px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.mic-img {
+  height: 80px;
+  width: 80px;
+  padding: 5px;
+  background-color: #8080805e;
+  border-radius: 100%;
+  border: none;
+  box-shadow: 0px 0px 5px black;
+  animation: micGlow 1.5s infinite alternate; /* Duración y tipo de animación */
+}
+
+
+  .mic-img i {
+    font-size: 30px;
+    width: 80px;
+    background-color: gray;
+    border-radius: 100%;
+    padding: 10px;
+  }
+
+
+
+
+
+
+@keyframes micGlow {
+  0% {
+    opacity: 0.9;
+    background-color: #0000003d;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 1;
+   
+    transform: scale(1.1);
+  }
+}

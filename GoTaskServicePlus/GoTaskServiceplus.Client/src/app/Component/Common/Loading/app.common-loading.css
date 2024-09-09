@@ -1,0 +1,147 @@
+.loading {
+  font-size: 20px;
+  height: 80px;
+  color: black;
+}
+
+.loading-image {
+  max-height: 300px;
+  width: auto;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+@media (max-width: 450px) {
+
+  .loading-image {
+    max-height: 90%;
+    width: 90%;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0px 0px 5px black;
+  }
+}
+
+
+
+.loading-div {
+  background-color: orangered;
+  box-shadow: 0px 0px 5px black, 0px 0px 10px black inset;
+  width: 60px;
+  height: 60px;
+}
+
+
+.text-center {
+  background-color: #1b0d0859; /*rgba(0, 0, 0,0.5);*/
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  z-index: 9;
+}
+
+.text {
+  font-size: 20px;
+  height: 35px;
+  color: black;
+  top: 60px;
+  position: absolute;
+  color: white;
+  font-size: 25px;
+  background-color: white;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px black, 0px 0px 5px inset;
+  width: 99vw;
+  overflow: hidden;
+}
+
+  .text b {
+    height: 100%;
+    min-width: 50px;
+    background-color: green;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+
+.text-msg {
+  background-color: orangered;
+  position: absolute;
+  z-index: 1001;
+  box-shadow: 0px 0px 5px black;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  width: 100%;
+  color: white;
+  top: 90px;
+  bottom: auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  column-gap:10px;
+}
+
+
+@media (max-width: 450px) {
+  .text-msg {
+    font-size: 13px;
+  
+  }
+}
+
+
+.image-loading{
+    width:auto;
+    height:300px;
+    z-index:100;
+    border-radius:5px;
+}
+
+@media (max-width: 450px) {
+
+  .image-loading {
+    height: 200px;
+  }
+
+}
+
+.loading-partial{
+    height:20px;
+    width:20px;
+}
+
+
+.div-public {
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 5px black;
+  background-color: orangered;
+  margin-top:50px;
+}
+
+.price-public {
+  background-color: orangered;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-size: 26px;
+}

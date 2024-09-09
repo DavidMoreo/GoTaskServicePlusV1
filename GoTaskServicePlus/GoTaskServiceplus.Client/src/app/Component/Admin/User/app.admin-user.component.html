@@ -1,0 +1,190 @@
+
+<app-permission>
+  <div class="containe-concept">   
+    <div class="container-input">
+      <p class="text-form">
+        {{languageTraslate("Nombre")}}
+        <input type="text" name="name" [(ngModel)]="_UserService.user.name" />
+        {{languageTraslate("Clave")}}
+        <input type="text" name="name" [(ngModel)]="_UserService.user.password" />
+        {{languageTraslate("Correo")}}
+        <input type="text" name="email" [(ngModel)]="_UserService.user.email" />
+        {{languageTraslate("Nit")}}
+        <input type="text" name="nit" [(ngModel)]="_UserService.user.mobileNumber" />
+      </p>
+
+      <p class="text-form">
+        {{languageTraslate("Empresa")}}
+        <select (click)="onSelectUpdateCompanyInUser($event)">
+          @if(     this._UserService._listCompany!=undefined){
+
+          @if(_UserService.user.id=="00000000-0000-0000-0000-000000000000" ){
+          <option value="0"  selected > {{languageTraslate("Seleccionar")}}</option>
+          }@else{
+          <option value="0" selected> {{_UserService.user.conceptCompany.name}}</option>
+          }
+          @for( item of  this._UserService._listCompany; track item.id){
+          <option value="{{item.id}}">{{item.name}}</option>
+          }
+          }
+        </select>
+      </p>
+
+
+          @if(     this._UserService._listProject!=undefined){
+      <p class="text-form">
+        {{languageTraslate("Sucursal")}}
+        <select (click)="onSelectUpdateProjectInUser($event)">
+
+          @if(_UserService.user.id=="00000000-0000-0000-0000-000000000000"){
+          <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+          }@else{
+          <option value="0" selected> {{ _UserService.user.conceptProject.name}}</option>
+          }
+
+
+          @for( item of  this._UserService._listProject; track item.id){
+          <option value="{{item.id}}">{{item.name}}</option>
+          }
+          
+        </select>
+      </p>
+      }
+
+
+    </div>
+
+
+
+    <p class="text-form">
+      {{languageTraslate("Rol")}}
+
+      <select (change)="onSelectRol($event)">
+   
+        <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>      
+        @for( item of   this._UserService.listRolUser; track item.id){
+        <option value="{{item.id}}">{{item.name}} - {{item.id}}</option>
+        }
+      </select>
+    </p>
+
+
+    <div class="grid-container">
+      @for( item of  this._UserService.user.rolUser; track item.id){
+      <div class="item-rol">
+        <p>{{item.name}}</p><button (click)="DeleteRol(item.id)" >Eliminar</button>
+      </div>
+      }
+
+    </div>
+
+
+
+    <div class="btn-scroll">
+
+
+      <p class="text-form">
+        {{languageTraslate("Empresa Filtro")}}
+        <select (change)="onSelectChangeCompany($event)">
+          @if(     this._UserService._listCompanyFilter!=undefined){
+
+          @if(_UserService.user.id=="00000000-0000-0000-0000-000000000000" ){
+          <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+          }@else{
+          <option value="0" selected> {{_UserService.user.conceptCompany.name}}</option>
+          }
+          @for( item of  this._UserService._listCompanyFilter; track item.id){
+          <option value="{{item.id}}">{{item.name}}</option>
+          }
+          }
+        </select>
+      </p>
+
+
+      @if(     this._UserService._listProjectFilter!=undefined){
+      <p class="text-form">
+        {{languageTraslate("Sucursal Filtro")}}
+        <select (change)="onSelectChangeProject($event)">
+
+          @if(_UserService.user.id=="00000000-0000-0000-0000-000000000000"){
+          <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+          }@else{
+          <option value="0" selected> {{ _UserService.user.conceptProject.name}}</option>
+          }
+
+
+          @for( item of  this._UserService._listProjectFilter; track item.id){
+          <option value="{{item.id}}">{{item.name}}</option>
+          }
+
+        </select>
+      </p>
+      }
+
+
+
+
+      @if(true){
+      <button (click)="SaveUser()"><i class="bi bi-floppy2-fill"></i></button>
+      }
+    </div>
+
+  </div>
+
+
+
+  @if(NullProductSelectId("0")){
+  <app-common-menu-grid (Edit)="Edit($event)"
+                        (Delete)="Delete($event)"
+                         (Clone)="Clone($event)"
+                         (ClearData)="ClearData($event)"
+                        [item]="_UserService.rowSelection"></app-common-menu-grid>
+  }
+
+
+
+  <app-common-custom-grid columns="4">
+
+    @if(this._UserService._listUser!=undefined){
+
+    <div class="div-header">
+      Nombre
+    </div>
+    <div class="div-header">
+      Celular
+    </div>
+    <div class="div-header">
+      Empresa
+    </div>
+    <div class="div-header">
+      Sucursal
+    </div>
+  
+
+
+    @for( item of this._UserService._listUser; track item.id){
+
+
+
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':NullProductSelectId(item.id)}">
+      {{item.name}}
+    </div>
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':NullProductSelectId(item.id)}">
+      {{item.email}}
+    </div>
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':NullProductSelectId(item.id)}">
+      {{GetNameCompany(item.idCompany)}}
+    </div>
+    <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':NullProductSelectId(item.id)}">
+      {{GetNameProject(item.idProject)}}
+    </div>
+   
+    }
+
+    }
+
+
+
+  </app-common-custom-grid>
+
+</app-permission>

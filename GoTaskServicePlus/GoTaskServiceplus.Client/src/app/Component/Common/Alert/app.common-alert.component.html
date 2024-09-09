@@ -1,0 +1,12 @@
+@if(  this.GetAlert().status){
+<div class="continer-list-alert" (click)="CloseAlert()">
+  <div class="alert-item " >
+    <label class="msg">
+      {{this.GetAlert().msg}}
+    </label>
+  </div>
+
+</div>
+}
+
+

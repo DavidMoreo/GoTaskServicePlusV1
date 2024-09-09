@@ -1,0 +1,104 @@
+
+
+
+<div class="scroll">
+
+
+
+
+
+  <div class="container-register">
+
+
+
+    <div class="item-register">
+
+
+      <div class="item-title">
+        <p>Vamos a crear tu cuenta</p>
+      </div>
+
+      @if(_user.email ==""){
+      <div class="go-page">
+        <button>1</button> <p>Para comenzar requerimos un número de celular con WhatsApp para poder enviarte el código de autenticación.</p>
+      </div>
+      }
+
+      <br />
+      <div class="input-text">
+        <p><b class="color-red">*</b>Número de WhatsApp</p>
+        <input name="WhatsApp" type="email" [(ngModel)]="_user.email" />
+
+      </div>
+
+      <!--<div>
+    <p>Número de Whatsapp</p>
+    <input [(ngModel)]="_user.mobileNumber" />
+  </div>-->
+      @if(_user.password != _user.keyPassword ){
+      <p class="alert-password">Las claves no son iguales</p>
+      }
+
+      @if( ValidationNumber()){
+
+      @if(_user.password ==""){
+      <div class="go-page">
+        <button>2</button> <p>Es muy importante la clave de seguridad.</p>
+      </div>
+      }
+
+
+      <div class="input-text">
+        <p><b class="color-red">*</b>Clave</p>
+        <input name="password1" [(ngModel)]="_user.password" />
+      </div>
+      <div class="input-text">
+        <p><b class="color-red">*</b>Confirmar Clave</p>
+        <input name="password2" [(ngModel)]="_user.keyPassword" />
+      </div>
+      <button class="btn-key-verification  btn-generate-key " (click)="GenerateKey()">Proponer Claves<i class="bi bi-key-fill"></i></button>
+      }
+
+      @if(ValidationCode()){
+
+      <div class="go-page">
+        <button>3</button> <p>Y solo faltaría solicitar e ingresar el código de seguridad.</p>
+      </div>
+
+      <div class="input-text">
+        <p><b class="color-red">*</b>Codigo de verificación</p>
+        <input name="code" [(ngModel)]="codeVerificationInput" />
+      </div>
+
+
+
+
+      @if(CetcodeVerificationInput()){
+      <div class="btn-save">
+        <button type="submit" (click)="Validation()">Continuar</button>
+      </div>
+      }@else
+      {
+
+      <button class="btn-key-verification" (click)="SetCodeVerification()">Pedir codigo de verificación <i class="bi bi-lightning-charge"></i></button>
+
+
+      }
+
+
+
+      }
+
+
+
+
+    </div>
+
+
+
+
+  </div>
+
+</div>
+
+

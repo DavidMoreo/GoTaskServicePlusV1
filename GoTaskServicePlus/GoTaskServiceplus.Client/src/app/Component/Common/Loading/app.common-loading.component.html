@@ -1,0 +1,21 @@
+@if(this._Service._active || active ){
+<div class="text-center loading ">
+  <!--@if(_Service.productImg.url!="/assets/logo.png"){
+  <div class="div-public">
+    <img src="{{GetUrlImg(_Service.productImg,'PHONE')}}" alt="Loading" class="image-loading" />
+    <p class="price-public">Por solo {{_Service.productImg.code}}</p>
+  </div>
+  }@else{-->
+  <img src="{{_Service.productImg.url}}" alt="Loading" class="image-loading" />
+  <!--}-->
+  <p class="text-msg">{{_Service._text}}   <img src="assets/loading.gif" alt="Loading" class="loading-image loading-partial" />  </p>
+  @if(_Service._count>0){
+  <div class="text">
+    <b [style]="{'width':_Service._text+'%'}">{{_Service._count}}%</b>
+  </div>
+  }
+</div>
+}
+
+
+

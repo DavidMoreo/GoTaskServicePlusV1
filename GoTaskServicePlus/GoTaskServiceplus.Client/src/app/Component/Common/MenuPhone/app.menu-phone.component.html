@@ -1,0 +1,26 @@
+
+@if(mode){
+
+<div class="div-menu-phone">
+  <button class="btn-memu" (click)="GpsLoad()">
+    <i class="bi bi-crosshair"></i>
+    Gps
+  </button>
+  <button class="btn-memu" (click)="Route('user-favorite')">
+    <i class="bi bi-heart-fill"></i>
+    Favoritos
+  </button>
+  <button class="btn-memu" (click)="Route('product-cart')">
+    <i class="bi bi-cart4"></i>
+    Carrito
+  </button>
+  <button class="btn-memu" (click)="Route('chat-bot')">
+    <i class="bi bi-chat-left-dots-fill"></i>
+    Asistente
+  </button>
+  <button class="btn-memu" (click)="Route('product-buy')">
+    <i class="bi bi-bag-fill"></i>
+    Compras
+  </button>
+</div>
+}

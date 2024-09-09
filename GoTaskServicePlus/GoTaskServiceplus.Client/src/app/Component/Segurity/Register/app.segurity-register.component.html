@@ -1,0 +1,240 @@
+
+
+
+
+
+<div class="container-register">
+  @if(_page==0){
+ 
+  <div  class="item-register">
+
+    <div class="item">
+      <p>Correo</p>
+      <input [(ngModel)]="_user.email" />
+    </div>
+
+    <div>
+      <p>Número de Whatsapp</p>
+      <input [(ngModel)]="_user.mobileNumber" />
+    </div>
+
+    <div>
+      <p>Clave</p>
+      <input [(ngModel)]="_user.password" />
+    </div>
+    <div>
+      <p>Confirmar Clave</p>
+      <input [(ngModel)]="_user.keyPassword" />
+    </div>
+
+    <div class="btn-save">
+      <button (click)="save()">Siguiente</button>
+    </div>
+
+  </div>
+  }
+  @if(_page==1){
+  <div>
+
+    <audio class="mp3" controls autoplay>
+      <source [src]="baseApi+'soun/voice-register/Register-1.mp3'" type="audio/mpeg">
+    </audio>
+
+    <div class="container-msg">
+      <p class="text-msg mode-msg">
+        <button><i class="bi bi-robot"></i></button>
+        Qué bien, ahora debes validar tu correo electrónico. Se ha enviado un enlace para la activación de tu cuenta.
+      </p>
+
+      <div class="btn-save">
+        <button (click)="_page=2">Siguiente</button>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  }
+  @if(_page==2){
+  <div class="vertical">
+
+    <audio class="mp3" controls autoplay>
+      <source [src]="baseApi+'soun/voice-register/register-2.mp3'" type="audio/mpeg">
+    </audio>
+
+    <div class="container-msg">
+      <p class="text-msg mode-msg">
+        <button><i class="bi bi-robot"></i></button>
+        Muy bien, estamos felices porque ahora podremos crecer juntos y nuestro objetivo es poder ayudarte a cumplir tus metas.
+      </p>
+      <p class="text-msg mode-msg">
+        <button><i class="bi bi-robot"></i></button>
+        Ahora, antes de poder publicar tus artículos o servicios es importante
+        que puedas crear tu negocio, no se requiere una empresa jurídica,
+        pero sí importa que tengas una imagen establecida para que tus
+        futuros clientes te puedan identificar y además sientan confianza en tus productos.
+      </p>
+
+      <p class="text-msg mode-msg">
+        <button><i class="bi bi-robot"></i></button>
+        Recuerda que el objetivo de esta plataforma actualmente no es realizar
+        ventas y pagos en línea. Lo que queremos es que puedas atraer clientes
+        cerca de tu ubicación, permitiendo que el cliente pueda recoger el
+        paquete o tú lo entregues y recibas el pago en la ubicación del cliente.
+        Esto tiene muchos beneficios, como no pagar un valor por cada transacción
+        realizada en línea. Además, si tus clientes se sienten satisfechos con tu
+        servicio o producto, posiblemente volverán a tu negocio sin tener que publicar
+        los artículos en alguna tienda virtual. Todo depende del trato y el servicio brindado a tus clientes.
+      </p>
+
+      <div class="btn-save">
+        <button (click)="_page=3">Comencemos con tu negocio</button>
+      </div>
+    </div>
+
+  </div>
+  }
+
+  @if(_page==3){
+  <div>
+
+    <audio class="mp3" controls autoplay>
+      <source [src]="baseApi+'soun/voice-register/Register-3.mp3'" type="audio/mpeg">
+    </audio>
+
+    <div class="container-msg">
+
+      <p class="text-msg mode-msg">
+        <button><i class="bi bi-robot"></i></button>
+        ¿Cómo se llama tu negocio o como quieres que los clientes te conozcan?
+      </p>
+      <input class="input-new" placeholder="Nombre de tu negocio" />
+
+    </div>
+
+    <div class="btn-save">
+      <button (click)="_page=4">Seguimos con tú logo</button>
+    </div>
+  </div>
+  }
+
+  @if(_page==4){
+  <div>
+
+    <audio class="mp3" controls autoplay>
+      <source [src]="baseApi+'soun/voice-register/Register-4.mp3'" type="audio/mpeg">
+    </audio>
+
+    <div class="container-msg">
+
+      <p class="text-msg mode-msg">
+        <button><i class="bi bi-robot"></i></button>
+        El logo es una de las partes más importante, porque permite que los clientes recuerden de manera mucho más fácil el nombre de tu marca o negocio.
+      </p>
+      <input type="file" class="input-new" placeholder="Nombre de tu negocio" />
+
+    </div>
+
+    <div class="btn-save">
+      <button (click)="_page=5">Seguimos con tú ubicación</button>
+    </div>
+  </div>
+  }
+
+  @if(_page==5){
+  <div>
+    <audio class="mp3" controls autoplay>
+      <source [src]="baseApi+'soun/voice-register/Register-5.mp3'" type="audio/mpeg">
+    </audio>
+    <div class="container-msg">
+
+      <p class="text-msg mode-msg">
+        <button><i class="bi bi-robot"></i></button>
+        Diligencia los datos de tu ubicación, esta información es muy importante para que tus clientes te encuentren de manera más fácil.
+      </p>
+      <input class="input-new" placeholder="País" />
+      <br />
+      <input class="input-new" placeholder="Región" />
+      <br />
+      <input class="input-new" placeholder="Ciudad" />
+    </div>
+
+    <div class="map">
+      <br />
+      <input class="input-new" placeholder="Ciudad" [(ngModel)]="_map" (change)="changeMap()" />
+      <br />
+      @if(_mapActive)   {
+      <iframe  [src]="urlSafe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      }
+    </div>
+
+    <br />
+    <div class="btn-save">
+      <button (click)="_page=6">Tú campo de mercado</button>
+    </div>
+  </div>
+  }
+
+  @if(_page==6){
+  <div>
+    <audio class="mp3" controls autoplay>
+      <source [src]="baseApi+'soun/voice-register/Register-6.mp3'" type="audio/mpeg">
+    </audio>
+    <div class="container-msg">
+
+      <p class="text-msg mode-msg">
+        <button><i class="bi bi-robot"></i></button>
+        ¿Qué quiere decir tipos de mercado? Son los tipos de productos que vende tu negocio como:<br />
+        Electrónica robótica.<br />
+        Electrónica del hogar.<br />
+        Hogar.<br />
+        Ropa.<br />
+        Etc.<br />
+        Esto busca generar una clasificación que permita mejorar las búsquedas de los clientes.
+      </p>
+      <div class="div-input">
+        <input class="input-list" placeholder="Buscar" />
+        <button class="btn-list" (click)="list.style.display=='none'?list.style.display='flex':list.style.display='none'">
+          @if(list.style.display=='none'){
+          <i  class="bi bi-caret-down-fill"></i>
+          }
+          @if(list.style.display=='flex'){
+          <i class="bi bi-caret-up"></i>
+          }
+        </button>
+        <div class="list" style="display:none;" #list>
+          <button (click)="list.style.display='none'">Imtem</button>
+          <button (click)="list.style.display='none'">Imtem</button>
+          <button (click)="list.style.display='none'">Imtem</button>
+          <button (click)="list.style.display='none'">Imtem</button>
+          <button (click)="list.style.display='none'">Imtem</button>
+          <button (click)="list.style.display='none'">Imtem</button>
+          <button (click)="list.style.display='none'">Imtem</button>
+          <button (click)="list.style.display='none'">Imtem</button>
+          <button (click)="list.style.display='none'">Imtem</button>
+        </div>
+      </div>
+      <br />
+
+      <div class="flex-auto">
+        <div class="item-filter">
+          <button>x</button>
+          <p>Nombre</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="btn-save">
+      <button (click)="_page=6">Terminar</button>
+    </div>
+  </div>
+  }
+
+
+</div>
+
+
+
+

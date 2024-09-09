@@ -1,0 +1,256 @@
+<app-permission page="add-product">
+
+  <form (ngSubmit)="OnSubmit()">
+    <div class="contaniner-general">
+      @if(addPrice || !NullProductSelectId()){
+      <div class="container-input-product">
+        <p class="text-form">
+          {{languageTraslate("Nombre")}}
+          <app-common-input-text [value]="tempRefer.name"
+                                 (EventChanged)="ChangedInputReferName($event)"
+                                 [isRequired]="true"
+                                 [nameId]="'refer_name_product'"
+                                 textTransfor="'uppercase'"></app-common-input-text>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Cantidad")}}
+          <a href="C:\Users\lolo\source\repos\STORAGE\PRODUCCIÓN\GoTaskServicePlus\GoTaskServicePlus\GoTaskServiceplus.Client\src\app\Component\Product\ReferProduct\app.product-refer-product.component.html">C:\Users\lolo\source\repos\STORAGE\PRODUCCIÓN\GoTaskServicePlus\GoTaskServicePlus\GoTaskServiceplus.Client\src\app\Component\Product\ReferProduct\app.product-refer-product.component.html</a>
+          <app-common-input-text [value]="GetValueToString(tempRefer.quantity)"
+                                 (EventChanged)="ChangedInputReferQuantity($event)"
+                                 [isRequired]="true"
+                                 [typeInput]="'number'"
+                                 [nameId]="'refer_product'"
+                                 textTransfor="'uppercase'"></app-common-input-text>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("precio")}}
+          <app-common-input-text [value]="GetPriceToString(tempRefer.price)"
+                                 [enable]="false"
+                                 [nameId]="'refer_price_product'"
+                                 [isMoney]="true"
+                                 textTransfor="'uppercase'"></app-common-input-text>
+        </p>
+
+        <button class="background-color-green save " (click)="Save()">Guardar</button>
+      </div>
+      }
+
+
+      @if(!addPrice && NullProductSelectId() ){
+      <div class="container-input-price">
+        <p class="text-form">
+          {{languageTraslate("Tipo")}}
+          <app-common-input-select [value]="tempPrice.typeAction"
+                                   [isRequired]="true"
+                                   [nameId]="'tipo'"
+                                   (EventChanged)="ChangedInputTypePrice($event)"
+                                   [list]="LoadTypes()"></app-common-input-select>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Titulo")}}
+          <app-common-input-text [value]="tempPrice.name"
+                                 (EventChanged)="ChangedInputPriceName($event)"
+                                 [isRequired]="true"
+                                 [nameId]="'name_price'"
+                                 textTransfor="'uppercase'"></app-common-input-text>
+        </p>
+        <p class="text-form">
+          {{languageTraslate("Valor")}}
+          <app-common-input-text [value]="GetValueToString(tempPrice.price)"
+                                 (EventChanged)="ChangedInputPrice($event)"
+                                 [isRequired]="true"
+                                 [isMoney]="!IsNumber()"
+                                 [typeInput]="IsNumber() ? 'number' : 'text'"
+                                 [nameId]="'refer_price'"
+                                 textTransfor="'uppercase'"></app-common-input-text>
+        </p>
+
+        <p class="text-form">
+          {{languageTraslate("Costos publicos")}}
+          <app-common-btn-on-off (Changed)="ChangedDisble($event)"
+                                 [Status]="(tempPrice.isPublic)"
+                                 [Enable]="true"
+                                 Msg="">
+          </app-common-btn-on-off>
+        </p>
+
+        <p></p>
+        <p></p>
+        <button class="background-color-red-rgb save " (click)="Clear()">Terminar<i class="bi bi-x-circle-fill"></i></button>
+        <button class="background-color-blue save " (click)="AddPrice()">Agregar <i class="bi bi-coin"></i></button>
+
+
+      </div>
+
+      }
+    </div>
+
+  </form>
+
+
+  <app-common-menu-grid (Edit)="Edit($event)"
+                        (Delete)="Delete($event)"
+                        (Clone)="Clone($event)"
+                        (ClearData)="ClearData($event)"
+                        (Change)="ChangeMenu($event)"
+                        [IsClone]="true"
+                        [visible]="NullProductSelectId()"
+                        [item]="GetReferRowSelect()"></app-common-menu-grid>
+
+
+
+  <app-common-custom-grid columns="2"
+                          (Filter)="FilterProduct($event)"
+                          (FilterCancel)="FilterCancel($event)"
+                          (GoPage)="GoPage($event)"
+                          (GoBackPage)="GoBackPageData($event)"
+                          [page]="this.page.toString()">
+
+
+    <div class="div-header">
+      Nombre
+    </div>
+    <div class="div-header">
+      Cantidad
+    </div>
+
+    @for( item of GetListRefer(); track item.name){
+    <div class="div-item" (click)="Selection(item)" [ngClass]="{'row-select':IsSelection(item)}">
+      {{item.name}}
+    </div>
+    <div class="div-item" (click)="Selection(item)" [ngClass]="{'row-select':IsSelection(item)}">
+      {{item.quantity}}
+    </div>
+
+    @if(IsSelection(item)){
+
+    @for( data of IsCost(GetListPrice(item)); track data.id){
+    <div class="item-price">
+      <p><b><i class="bi bi-arrow-up-short ico-price  color-green "></i></b> <b class="price">  {{GetPriceCurrency(data.price)}}</b>  </p>
+    </div>
+    <div class="item-price">
+      <b class="title-detail">{{data.name}}</b>
+      <button (click)="RemovePrice(data)">
+        <i class="cursor-pointer bi bi-trash3-fill color-red"></i>
+      </button>
+      @if(data.isPublic){
+      <div class="public">
+        <i class="bi bi-eye-fill color-green "></i>
+      </div>
+      }
+    </div>
+
+    }
+
+    @for( data of IsProfitInMoney(GetListPrice(item)); track data.id){
+    <div class="item-price">
+      <p><b><i class="bi bi-arrow-up-short ico-price  color-green "></i></b> <b class="price">  {{GetPriceCurrency(data.price)}}</b>  </p>
+    </div>
+    <div class="item-price">
+      <b class="title-detail">{{data.name}}</b>
+      <button (click)="RemovePrice(data)">
+        <i class="bi bi-trash3-fill cursor-pointer color-red cursor-pointer"></i>
+      </button>
+      @if(data.isPublic){
+      <div class="public">
+        <i class="bi bi-eye-fill color-green "></i>
+      </div>
+      }
+    </div>
+    }
+
+    @for( data of IsProfitInPorcentage(GetListPrice(item)); track data.id){
+    <div class="item-price">
+      <p><b><i class="bi bi-arrow-up-short ico-price  color-green "></i></b> <b class="price">  {{data.price}} %</b>  </p>
+    </div>
+    <div class="item-price">
+      <b class="title-detail">{{data.name}}</b>
+      <button (click)="RemovePrice(data)">
+        <i class="bi bi-trash3-fill cursor-pointer color-red cursor-pointer"></i>
+      </button>
+      @if(data.isPublic){
+      <div class="public">
+        <i class="bi bi-eye-fill color-green "></i>
+      </div>
+      }
+    </div>
+    }
+
+
+
+    @for( data of IsCostPublic(GetListPrice(item)); track data.id){
+    <div class="item-price">
+      <p><b><i class="bi bi-arrow-up-short ico-price  color-green "></i></b> <b class="price">  {{GetPriceCurrency(data.price)}}</b>  </p>
+    </div>
+    <div class="item-price">
+      <b class="title-detail">{{data.name}}</b>
+      <button (click)="RemovePrice(data)">
+        <i class="bi bi-trash3-fill cursor-pointer color-red cursor-pointer"></i>
+      </button>
+      @if(data.isPublic){
+      <div class="public">
+        <i class="bi bi-eye-fill color-green "></i>
+      </div>
+      }
+
+
+    </div>
+    }
+
+
+
+    @for( data of IsADiscount(GetListPrice(item)); track data.id){
+    <div class="item-price">
+      <p><b><i class="bi bi-arrow-down-short ico-price   color-red "></i></b> <b class="price">  {{GetPriceCurrency(data.price)}}</b>  </p>
+    </div>
+    <div class="item-price">
+      <b class="title-detail">{{data.name}}</b>
+      <button (click)="RemovePrice(data)">
+        <i class="bi bi-trash3-fill color-red"></i>
+      </button>
+      @if(data.isPublic){
+      <div class="public">
+        <i class="bi bi-eye-fill color-green "></i>
+      </div>
+      }
+    </div>
+    }
+
+
+    @for( data of IsADiscountPorcentage(GetListPrice(item)); track data.id){
+    <div class="item-price">
+      <p><b><i class="bi bi-arrow-up-short ico-price  color-green "></i></b> <b class="price">  {{data.price}} %</b>  </p>
+    </div>
+    <div class="item-price">
+      <b class="title-detail">{{data.name}}</b>
+      <button (click)="RemovePrice(data)">
+        <i class="bi bi-trash3-fill cursor-pointer color-red cursor-pointer"></i>
+      </button>
+      @if(data.isPublic){
+      <div class="public">
+        <i class="bi bi-eye-fill color-green "></i>
+      </div>
+      }
+    </div>
+    }
+
+
+
+
+
+
+    <div class="item-price end">
+      <p><b><i class="bi bi-currency-dollar ico-price"></i></b> <b class="price">  {{GetPriceCurrency(Total(item))}}</b>  </p>
+    </div>
+    <div class="item-price"></div>
+    }
+    }
+  </app-common-custom-grid>
+
+
+  <div class="margin-top"></div>
+
+</app-permission>

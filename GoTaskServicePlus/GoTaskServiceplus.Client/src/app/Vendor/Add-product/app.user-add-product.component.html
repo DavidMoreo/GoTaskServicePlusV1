@@ -1,0 +1,91 @@
+
+<div class="flex">
+
+
+  <div class="container-add-product">
+
+    <div class="item">
+      Nombre del producto<br />
+      <input placeholder="Editar..." />
+    </div>
+    <div class="item">
+      Tienda<br />
+      <select>
+        <option value="0">Virtual </option>
+        <option value="0">Física </option>
+      </select>
+    </div>
+    <div class="item">
+      Valor unidad<br />
+      <input placeholder="Editar..." />
+    </div>
+    <div class="item">
+      Entrega de producto<br />
+      <select>
+        <option value="0">Envío aontra entrega </option>
+        <option value="0">Entrega en tienda física </option>
+      </select>
+    </div>
+
+    <div class="item">
+      Valor envio<br />
+      <input placeholder="Editar..." />
+    </div>
+    <div class="item">
+      Referencia<br />
+      <input placeholder="Editar..." />
+    </div>
+
+    <div class="item">
+      Cantidad disponible<br />
+      <input placeholder="Editar..." />
+    </div>
+
+    <div class="item">
+      Producto disponible<br />
+      <select>
+        <option value="0">Activo</option>
+        <option value="0">Inactivo</option>
+      </select>
+    </div>
+
+    <div class="item">
+      Ciudad de venta<br />
+      <input placeholder="Editar..." />
+    </div>
+
+
+
+
+  </div>
+
+  <div class="container-add-img">
+    <div *ngIf="true">
+      Url imagen drive<br />
+      <textarea placeholder="Editar..."></textarea>
+    </div>
+
+    <div *ngIf="false">
+      Url imagen host<br />
+      <textarea placeholder="Editar..."></textarea>
+    </div>
+
+    <div *ngIf="false">
+      Subir imagen<br />
+      <input placeholder="Editar..." />
+    </div>
+
+    <div  class="add-img">
+      <button><i class="bi bi-cloud-arrow-up-fill"></i></button>
+    </div>
+  </div>
+  <p class="title" >Imagenes</p>
+  <div class="container-img-list">
+
+    <img src="https://http2.mlstatic.com/D_NQ_NP_863101-MLU71212902832_082023-O.webp" />
+
+  </div>
+
+</div>
+
+

@@ -1,0 +1,37 @@
+.popup {
+  position: relative;
+
+}
+
+
+.msg-popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  box-shadow: 0 3px 5px #000;
+  top: -10px;
+  font-size: 12px;
+  left: 5px;
+  min-width: 15px;
+}
+
+
+.liner-popup {
+  position: absolute;
+  background-color: white;
+  top: 10px;
+  left: 8px;
+  transform: rotateZ(45deg);
+  height: 20px;
+  width: 20px;
+  box-shadow: 0px -10px 5px black;
+}
+
+
+.msg-popup:hover {
+ 
+}

@@ -1,0 +1,80 @@
+.scroll-category {
+
+  height: 80px;
+  width: 100vw;
+  overflow: hidden;
+  background-color: lightcoral;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  overflow-x:auto;
+ 
+
+  gap: 10px;
+  padding-left: 10px;
+}
+
+.item-category {
+  height: 80%;
+  overflow: hidden;
+  padding-right: 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  background-color: #949494;
+  border-radius: 5px;
+  gap: 5px;
+  box-shadow: 0px 0px 5px black;
+  color:white; 
+ cursor:pointer;
+  min-width:180px;
+  font-size:11px;
+
+}
+
+.continer-text-category  {
+  width: 100%;
+  text-align: center;
+}
+
+
+  .img-category {
+    height: 100%;
+    border-radius: 2px;
+    box-shadow: 0px 0px 5px black;
+    background-color:white;
+  }
+
+.select-category {
+  background-color: rgb(36, 122, 6);
+  position: absolute;
+  z-index: 10;
+  height: 50px;
+  animation: rotate 1s linear forwards;
+}
+
+
+
+@keyframes rotate {
+  0% {
+    right: 4px;
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(100%);
+   right:4px;
+  }
+}
+
+
+@keyframes moverDiv {
+  from {
+   
+  }
+
+  to {
+   
+  }
+}

@@ -1,0 +1,46 @@
+ @if(visible){
+<div class="edit-visible"
+     [ngStyle]="{ 'transform': '  translate(' + positionX + 'px, ' + positionY + 'px)'  }">
+
+
+  <div class="grad"
+       (mousedown)="onDragStart($event)"
+       (touchstart)="onDragStart($event)"
+       (mousemove)="onDrag($event)"
+       (touchmove)="onDrag($event)"
+       (mouseup)="onDragEnd()"
+       (touchend)="onDragEnd()"
+       (mouseleave)="onDragEnd()">
+    <i class="bi bi-arrows-move"></i>
+
+  </div>
+
+
+  @if(Edit){
+  <div class="div-item" (click)="EditGrid()">
+    <button><i class="bi bi-pencil"></i></button>
+    Editar
+  </div>
+  }
+
+  @if(IsClone){
+  <div class="div-item" (click)="CloneGrid()">
+    <button><i class="bi bi-copy"></i></button>
+    Clonar
+  </div>
+  }
+  @if(IsClearData){
+  <div class="div-item" (click)="ClearDataGrid()">
+    <button><i class="bi bi-copy"></i></button>
+    Cancelar
+  </div>
+  }
+
+  @if(IsDelete){
+  <div class="delete div-item " (click)="DeleteGrid()">
+    <button><i class="bi bi-trash3"></i></button>
+    Eliminar
+  </div>
+  }
+</div>
+ }

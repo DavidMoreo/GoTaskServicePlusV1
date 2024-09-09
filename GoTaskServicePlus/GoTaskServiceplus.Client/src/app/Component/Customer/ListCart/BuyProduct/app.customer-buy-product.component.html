@@ -1,0 +1,39 @@
+
+@if( this._BuyProduct.isBuyProduct){
+
+<div class="container-customer">
+
+  <div class="container-input input-data">
+    <div class="text-note">
+      <p>Si continúas</p>
+      <br />
+      <p>✔ Nos pondremos en contacto contigo para completar la compra y posteriormente entregar el producto.</p>
+      <hr />
+      <p>✔ Actualmente, la entrega de estos productos está disponible en las siguientes ciudades:</p>
+      <hr />
+      <p>✔ Mosquera Cundinamarca</p>
+      <p>✔ Madrid Cundinamarca</p>
+      <p>✔ Funza Cundinamarca </p>
+
+
+    </div>
+
+    <div class="btn-menu">
+      <button class="btn cancel"  (click)="CancelBuyProduct()">Cancelar</button>
+      <!--<a href="https://api.whatsapp.com/send?phone=573138740424&text={{GetProductString()}}" target="_blank">
+      <button class="btn buy" style="width:150px;">Escribir al vendedor <i class="bi bi-chat-dots-fill"></i></button>
+        </a>-->
+      
+      <button class="btn buy" (click)="BuyProductAlmacen()">Continuar</button>
+  
+
+    </div>
+
+
+  </div>
+
+
+
+
+</div>
+}

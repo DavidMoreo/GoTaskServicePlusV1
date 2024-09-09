@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="itext7" Version="8.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="YoutubeExplode" Version="6.3.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BD\Utility.csproj" />
+    <ProjectReference Include="..\GoTaskServicePlus.Interfaces\GoTaskServicePlus.Interfaces.csproj" />
+    <ProjectReference Include="..\GoTaskServicePlus.Model\GoTaskServicePlus.Model.csproj" />
+    <ProjectReference Include="..\GoTaskServicePlus.Services\GoTaskServicePlus.Services.csproj" />
+  </ItemGroup>
+
+</Project>

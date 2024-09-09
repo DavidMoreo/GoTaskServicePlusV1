@@ -1,0 +1,23 @@
+
+
+<!--<app-common-loading ></app-common-loading>-->
+
+<div class="scroll">
+
+  <div class="product-container">
+    @if(_search._favoritesList !=undefined && _search._favoritesList.length>0){
+    @for (item of _search._favoritesList ; track item.id) {
+    <app-item-product [product]="item" ></app-item-product>
+    <app-item-row-product [product]="item" ></app-item-row-product>
+    }
+    }@else{
+    <p class="title">No tienes productos en guardados</p>
+    }
+  </div>
+
+  <!--<div class=" end  width" (click)="searchProduct('List-product-search/all')">   
+    Más productos relacionados <i class="bi bi-shop-window"></i>    
+  </div>-->
+</div>
+
+<app-menu-phone></app-menu-phone>

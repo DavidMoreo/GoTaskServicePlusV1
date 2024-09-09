@@ -1,0 +1,23 @@
+
+<app-permission>
+
+  <div class="container">
+    @for( data of this._ListSearchService.listSearchFilterTemp; track data.filter){
+
+    <div class="item-search">
+      <p class="filter"> {{data.filter}}</p>
+      <p class="count"> {{GetCountData(data.filter)}}</p>
+      <div class="ip-list">
+        @for( ip of GetIp(data.filter); track ip){
+        <a class="ip-btn" href="https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data&ip={{ip}}" target="_blank">Ip:{{ip}}</a>      
+        <br />
+        }
+      </div>
+    </div>
+
+    }
+  </div>
+  <div class="margin" ></div>
+
+
+</app-permission>

@@ -1,0 +1,118 @@
+
+<app-permission [enable]="false" page="learn-iot">
+
+  <div class="container-general">
+
+    <div class="nav-title">
+
+      <div class="img-esp8266">
+        <img src="https://europe1.discourse-cdn.com/arduino/original/4X/0/2/9/0291789bd225787bf4a522964e24a624f92d05e4.jpeg" />
+      </div>
+
+      <h1>Control Domotico IOT con Arduino ESP 8266</h1>
+
+    </div>
+
+    <h2 class="sub-title">Introducción al Módulo ESP8266</h2>
+    <div class="text-data">
+      <article class="text-detail">
+        <p>El módulo ESP8266 es un pequeño dispositivo que integra un microcontrolador con capacidades Wi-Fi. Este microcontrolador ha ganado una gran popularidad en el mundo de la electrónica y la programación debido a su versatilidad y bajo costo.</p>
+        <p>El ESP8266 se utiliza principalmente en proyectos de IoT (Internet de las cosas) debido a su capacidad para conectarse a redes Wi-Fi y comunicarse a través de Internet. Puede ser programado para realizar una variedad de funciones, como recopilar datos de sensores y enviarlos a un servidor en la nube, controlar dispositivos remotamente a través de una aplicación móvil, actuar como un servidor web, entre otras aplicaciones.</p>
+        <p>Una de las ventajas del ESP8266 es su amplio soporte de desarrollo a través de diferentes entornos de programación. Por ejemplo, se puede programar utilizando el IDE de Arduino, MicroPython, Lua, entre otros. Esto lo hace accesible para una amplia gama de usuarios, desde principiantes hasta desarrolladores experimentados.</p>
+        <p>En resumen, el ESP8266 es un módulo altamente versátil y económico que permite la creación de proyectos IoT con conectividad Wi-Fi. Es una herramienta poderosa para explorar el mundo de la electrónica y la programación de dispositivos conectados.</p>
+      </article>
+    </div>
+
+
+    <h2 class="sub-title">Partes Generales del Módulo ESP8266</h2>
+    <div class="text-data">
+      <article class="text-detail">
+        <p><strong>Microcontrolador ESP8266:</strong> El corazón del módulo, que incluye el procesador y el chip Wi-Fi integrado. Este microcontrolador ejecuta el firmware que controla todas las funciones del ESP8266.</p>
+        <p><strong>Antena Wi-Fi:</strong> Para la comunicación inalámbrica, el ESP8266 incluye una antena integrada que permite la conexión a redes Wi-Fi.</p>
+        <p><strong>Puertos GPIO (Entrada/Salida de Propósito General):</strong> El ESP8266 incluye varios pines GPIO que pueden ser utilizados para interactuar con sensores, actuadores y otros dispositivos electrónicos.</p>
+        <p><strong>Interfaz de comunicación serie:</strong> El ESP8266 se puede comunicar con otros dispositivos a través de una interfaz serie (UART), que permite la transferencia de datos en serie.</p>
+        <p><strong>Memoria Flash:</strong> El ESP8266 generalmente incluye una cantidad de memoria flash que se utiliza para almacenar el firmware, programas de usuario, datos y configuraciones.</p>
+        <p><strong>Convertidor de nivel lógico:</strong> En algunos modelos, se incluye un convertidor de nivel lógico para permitir una comunicación segura con dispositivos que operan a diferentes niveles de voltaje.</p>
+        <p><strong>Regulador de voltaje:</strong> Para garantizar una alimentación estable, el ESP8266 a menudo incluye un regulador de voltaje que puede aceptar una amplia gama de voltajes de entrada y producir un voltaje constante para alimentar el módulo.</p>
+        <p><strong>Conector de alimentación:</strong> Un conector que permite la conexión de una fuente de alimentación para proporcionar energía al módulo.</p>
+      </article>
+    </div>
+
+    <h2 class="sub-title">Medidas de Prevención para el Uso del Módulo ESP8266</h2>
+    <div class="text-data">
+      <article class="text-detail">
+        <p><strong>1. Protección contra ESD (Descarga Electroestática):</strong> Al manipular el módulo ESP8266, es importante tomar precauciones para evitar dañarlo por descargas electrostáticas. Se recomienda utilizar una pulsera antiestática o tocar una superficie metálica descargada antes de manipular el módulo.</p>
+        <p><strong>2. Alimentación Estable:</strong> Es fundamental proporcionar una alimentación estable al módulo ESP8266 para evitar daños. Utiliza una fuente de alimentación adecuada y asegúrate de que el voltaje suministrado esté dentro de los límites especificados en las especificaciones del módulo.</p>
+        <p><strong>3. Evitar Cortocircuitos:</strong> Al realizar conexiones con el módulo ESP8266, asegúrate de que no haya cortocircuitos entre pines y que no se produzcan conexiones incorrectas que puedan dañar el dispositivo.</p>
+        <p><strong>4. Manipulación Cuidadosa:</strong> Manipula el módulo ESP8266 con cuidado para evitar daños físicos. Evita caídas, golpes y manipulaciones bruscas que puedan afectar su funcionamiento.</p>
+        <p><strong>5. Actualización del Firmware:</strong> Mantén actualizado el firmware del módulo ESP8266 para beneficiarte de mejoras de seguridad, corrección de errores y nuevas características. Sigue las instrucciones proporcionadas por el fabricante para realizar actualizaciones de forma segura.</p>
+        <p><strong>6. Protección contra Sobretensiones:</strong> Utiliza dispositivos de protección contra sobretensiones, como diodos de protección o varistores, para proteger el módulo ESP8266 contra picos de tensión en la alimentación o en las señales de entrada.</p>
+        <p><strong>7. Almacenamiento Adecuado:</strong> Cuando no esté en uso, almacena el módulo ESP8266 en un lugar seco y seguro para protegerlo de la humedad, el polvo y otros elementos que puedan afectar su funcionamiento.</p>
+      </article>
+    </div>
+
+    <h2 class="sub-title">Medidas de Prevención Adicionales para el Uso del Módulo ESP8266</h2>
+    <div class="text-data">
+      <article class="text-detail">
+        <p><strong>1. Niños con Acompañamiento de Adulto Responsable:</strong> Se recomienda que los niños utilicen el módulo ESP8266 bajo la supervisión y acompañamiento de un adulto responsable. Esto garantizará que se sigan las precauciones adecuadas y se eviten situaciones de riesgo.</p>
+        <p><strong>2. Medidas de Prevención por Corriente Alterna:</strong> Al utilizar el módulo ESP8266 en entornos donde se maneje corriente alterna (AC), es importante seguir medidas de prevención adicionales para evitar accidentes eléctricos. Estas medidas pueden incluir el uso de dispositivos de protección contra sobretensiones, el aislamiento adecuado de circuitos y el seguimiento de las normativas de seguridad eléctrica.</p>
+      </article>
+    </div>
+
+
+
+    <h2 class="sub-title">Herramientas</h2>
+    <div class="nav-title color-item-lis">
+      <div class="img-esp8266">
+        <img src="https://altronics.cl/image/image/catalog/productos/electronica/adaptadores/adaptador-usb-esp8266/adaptador-usb-esp8266-1-500x500.png" />
+      </div>
+      <h2 class="detail-list">Modulo programador para ESP 8266 recomendado</h2>
+    </div>
+
+    <br />
+
+    <div class="nav-title color-item-lis">
+      <div class="img-esp8266">
+        <img src="https://europe1.discourse-cdn.com/arduino/original/4X/0/2/9/0291789bd225787bf4a522964e24a624f92d05e4.jpeg" />
+      </div>
+      <h2 class="detail-list">Modulo ESP 8266</h2>
+    </div>
+
+    <br />
+
+    <div class="nav-title color-item-lis">
+      <a href="https://drive.google.com/file/d/187AFtqDsd6MZHCAtvwkliD9ir1RClTQL/view?usp=sharing">
+        <div class="ico">
+          <i class="bi bi-cloud-arrow-down-fill"></i>
+        </div>
+      </a>
+      <h2 class="detail-list">Descargar Código para programar ESP 8266</h2>
+    </div>
+    <br />
+
+    <div class="nav-title color-item-lis">
+      <a href="https://www.arduino.cc/en/software/">
+        <div class="ico">
+          <i class="bi bi-cloud-arrow-down-fill"></i>
+        </div>
+      </a>
+      <h2 class="detail-list">ID para programar ESP 8266</h2>
+    </div>
+    <br />
+
+    <div class="nav-title color-item-lis">
+      <a href="https://play.google.com/store/apps/developer?id=electr%C3%B3nicas+lolo">
+        <div class="ico">
+          <i class="bi bi-cloud-arrow-down-fill"></i>
+        </div>
+      </a>
+      <h2 class="detail-list">Descarga la app ( ESP IOT ) que te permitirá controlar los dispositivos IoT con el ESP8266</h2>
+    </div>
+
+
+
+
+    <div style="height:500px; width:100vw;"></div>
+  </div>
+
+</app-permission>

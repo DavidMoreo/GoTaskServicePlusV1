@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GoTaskServicePlus.Entities\GoTaskServicePlus.Entities.csproj" />
+    <ProjectReference Include="..\GoTaskServicePlus.Interfaces\GoTaskServicePlus.Interfaces.csproj" />
+    <ProjectReference Include="..\GoTaskServicePlus.Model\GoTaskServicePlus.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Bots\Model\" />
+    <Folder Include="Bots\Load Model\" />
+    <Folder Include="Concept\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+  </ItemGroup>
+
+</Project>

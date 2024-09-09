@@ -1,0 +1,13 @@
+.loading
+{  
+   height:15px;
+   width:15px;
+   overflow:hidden;
+}
+
+.loading img{
+    height:15px;
+    width:15px;
+   filter:grayscale(0px 1px 5px black);
+   border-radius:5px;
+}

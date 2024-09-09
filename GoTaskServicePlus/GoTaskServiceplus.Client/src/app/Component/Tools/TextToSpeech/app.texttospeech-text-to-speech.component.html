@@ -1,0 +1,107 @@
+<app-common-loading></app-common-loading>
+
+<!--<app-common-alert msg="{{_msg}}" ></app-common-alert>-->
+
+
+
+
+<div class="conatiner-speechText">
+
+  <div id="container-text-to-speech">
+    <!--<h1 class="title">Convierte el texto voz</h1>-->
+
+    <select class="select-item" (change)="modeSpeechLang($event)">
+      <option value="local">Idioma local</option>
+      <option value="todos">Todos</option>
+    </select>
+
+    <select (click)="onSelectChange($event)" class="select-item" (change)="onSelectChange($event)">
+      <option>Seleccionar</option>
+      @for( voice of _listVoiceView; track voice.id){
+      <option [value]="voice.name">{{voice.name}}</option>
+      }
+    </select>
+
+    <!--<button (click)="Load()">Obtener Voces Disponibles</button>-->
+    <!--<select  >
+      <option *ngFor="let elemento of listVoiceView" [ngValue]="elemento">{{ elemento }}</option>
+    </select>-->
+
+
+    <textarea #texValue id="text-input" [(ngModel)]="_extractedText" placeholder="Escribe el texto que deseas convertir a voz..."></textarea>
+    <br>
+    <div class="coniner-flex">
+
+      @if(_visibleBtn && texValue.value!="" ){
+      <button class="btn"><i class="bi bi-play-fill" (click)="speech(texValue.value)"></i></button>
+      }
+      @if(_visibleBtn==false){
+      <button class="btn" (click)="speechGoPage(texValue.value,'min')"><i class="bi bi-skip-backward-fill"></i></button>
+      <button class="btn"><i class="bi bi-stop-fill" (click)="speechCancel()"></i></button>
+      <button class="btn" (click)="speechGoPage(texValue.value,'max')"><i class="bi bi-skip-forward-fill"></i></button>
+      }
+
+
+
+
+
+      <button class="btn"><i class="bi bi-eraser" (click)="Clean()"></i></button>
+      <button class="btn"><i class="bi bi-floppy2-fill" (click)="savedMemory(texValue.value)"></i></button>
+
+      <div class="custom-file-upload">
+        <label for="fileInput" class="file-button"><i class="bi bi-filetype-pdf btn"></i></label>
+        <input (change)="onFileSelected($event)" type="file" id="fileInput" accept=".pdf" style="display: none">
+      </div>
+
+      <!--<button class="btn"><i class="bi bi-question-lg" (click)="savedMemory(texValue.value)"></i></button>-->
+
+      <div>
+
+      </div>
+
+    </div>
+    <div>
+      <div>
+        <!--<p [ngModel]="pages"></p>-->
+      </div>
+    </div>
+  </div>
+
+
+  @if(texSpeech!=undefined && texSpeech!="" && statusSpeech ){
+  <div id="container-text-speech">
+    <div class="container-pages">
+      <p> {{pages}}</p>
+    </div>
+    <p class="text-speech">
+      {{texSpeech}}
+
+    </p>
+
+  </div>
+  }
+
+
+  @if(_listMemory != undefined && _listMemory.length>0 && statusSpeech==false)
+  {
+  <div class="list-memory">
+    @for( item of _listMemory; track item.id){
+    <div class="item-memory">
+      <div (click)="SelectionMemory(item.name)">
+        <p>
+          {{item.name}}
+        </p>
+      </div>
+      <button (click)="deleteMemory(item.name)" class="delete-memory"><i class="bi bi-trash-fill"></i></button>
+    </div>
+    }
+  </div>
+  }
+
+
+</div>
+
+
+
+
+

@@ -1,0 +1,236 @@
+
+<app-permission>
+
+
+
+  <div class="concept-item">
+
+    <div class="container-input">
+      <p class="text-form">
+        {{languageTraslate("Nombre")}}
+        <input type="text" name="name" [(ngModel)]="_projectService._project.name" />
+        {{languageTraslate("celular")}}
+        <input type="text" name="code" [(ngModel)]=" this._projectService._project.mobileNumber" />
+        {{languageTraslate("Telefono")}}
+        <input type="text" name="code" [(ngModel)]=" this._projectService._project.phoneNumber" />
+
+
+      </p>
+      <!--{{languageTraslate("Url GPS")}}
+      <div class="gps-btn">
+        <input type="text" name="code" [(ngModel)]=" this._projectService._project.gpsGoogle" />
+        @if(this._projectService._project.gpsGoogle!=""){
+        <button (click)="Route(this._projectService._project.gpsGoogle)">Abrir mapa</button>
+        }
+      </div>-->
+
+      <p class="text-form">
+        {{languageTraslate("Tipo de empresa")}}
+
+        <select (click)="onSelectChangeTypeProject($event)">
+          @if(this._projectService._project.id == "00000000-0000-0000-0000-000000000000" ){
+          <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+          }@else{
+          <option value="0" selected>{{this._projectService._project.typeCompanyMode}} </option>
+          }
+
+          <option value="Vendedor Final">Vendedor Final</option>
+          <option value="Proveedor">Proveedor</option>
+          <option value="Fabricante">Fabricante</option>
+          <option value="Defaul">Defaul</option>
+        </select>
+      </p>
+
+
+      <p class="text-form">
+        {{languageTraslate("Empresa")}}
+
+        <select (click)="onSelectChangeCompany($event)">
+          @if(this._projectService._project.id != "00000000-0000-0000-0000-000000000000" ){
+          <option value="0" selected>{{  GetCompany(this._projectService._project)}} </option>
+          }@else{
+          <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+          }
+
+          @for( item of    this._projectService._listCompany; track item.id){
+          <option value="{{item.id}}">{{item.name}}</option>
+          }
+        </select>
+      </p>
+
+
+
+
+      <p class="text-form">
+        {{languageTraslate("Ubicación de venta")}}
+        <select (change)="onSelectChangeAdress($event)">
+
+          @if(_projectService._project.id =="00000000-0000-0000-0000-000000000000"){
+          <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+          }
+          @else{
+          <option value="0" selected> {{GetProjectAdressName(_projectService._project.addressItemId)}}</option>
+          }
+
+          @if(_projectService.adressList!=undefined){
+          @for( item of _projectService.adressList; track item.id){
+          <option value="{{item.id}}">{{item.name}}</option>
+          }
+          }
+        </select>
+      </p>
+
+
+      <div>
+        <p>Apertura </p>
+
+        <div>
+          <select (change)="onSelectChangeHorStart($event)" >
+            <option value="6">6:00:am</option>
+            <option value="7">7:00:am</option>
+            <option value="8">8:00:am</option>
+            <option value="9">9:00:am</option>
+            <option value="10">10:00:am</option>
+            <option value="11">11:00:am</option>
+            <option value="12">12:00:am</option>
+            <option value="13">1:00:pm</option>
+            <option value="14">2:00:pm</option>
+            <option value="15">3:00:pm</option>
+            <option value="16">4:00:pm</option>
+            <option value="17">5:00:pm</option>
+            <option value="18">6:00:pm</option>
+          </select>
+        </div>
+        <p>Cierre </p>
+
+        <div>
+          <select (change)="onSelectChangeHorEnd($event)" >
+            <option value="6"  >6:00:am</option>
+            <option value="7" >7:00:am</option>
+            <option value="8" >8:00:am</option>
+            <option value="9"  >9:00:am</option>
+            <option value="10" >10:00:am</option>
+            <option value="11" >11:00:am</option>
+            <option value="12" >12:00:am</option>
+            <option value="13" >1:00:pm</option>
+            <option value="14" >2:00:pm</option>
+            <option value="15">3:00:pm</option>
+            <option value="16" >4:00:pm</option>
+            <option value="17" >5:00:pm</option>
+            <option value="18" >6:00:pm</option>
+          </select>
+        </div>
+      </div>
+
+
+     
+
+    </div>
+
+    <div class="btn-scroll">
+
+
+
+      <p class="text-form">
+        {{languageTraslate("Empresa Filtro")}}
+
+        <select (click)="onSelectChangeFilterByCompany($event)">
+          @if(this._projectService._project.id != "00000000-0000-0000-0000-000000000000" ){
+          <option value="0" selected>{{this._projectService._project.conceptCompany.name}} </option>
+          }@else{
+          <option value="0" selected> {{languageTraslate("Seleccionar")}}</option>
+          }
+
+          @for( item of    this._projectService._listCompany; track item.id){
+          <option value="{{item.id}}">{{item.name}}</option>
+          }
+        </select>
+      </p>
+
+
+      @if(true){
+      <button (click)="SaveAndUpdateProject()"><i class="bi bi-floppy2-fill"></i></button>
+
+      }
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="scroll">
+    <div class="container-concep">
+      <div class="div-header">
+        Sucursal
+      </div>
+      <div class="div-header">
+       Celular
+      </div>
+      <div class="div-header">
+        Empresa
+      </div>
+      <div class="div-header">
+        Tipo
+      </div>
+
+      @if( this._projectService._listProject!=undefined){
+
+      @for( item of   this._projectService._listProject; track item.name){
+
+      <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}" [id]="item.id" >
+        {{item.name}}
+        @if(_rowSeletion==item.id){
+        <div class="edit-visible">
+          <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+          <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+        </div>
+        }
+      </div>
+
+
+      <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+        {{item.mobileNumber}}-   {{item.phoneNumber}}
+        @if(_rowSeletion==item.id){
+        <div class="edit-visible">
+          <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+          <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+        </div>
+        }
+
+      </div>
+      <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+        {{GetCompany(item)}}
+        @if(_rowSeletion==item.id){
+        <div class="edit-visible">
+          <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+          <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+        </div>
+        }
+
+      </div>
+
+
+      <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+
+        {{item.typeCompanyMode}}
+        @if(_rowSeletion==item.id){
+        <div class="edit-visible">
+          <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+          <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+        </div>
+        }
+      </div>
+      }
+
+      }
+
+    </div>
+  </div>
+    <div style="height:200px; width:100vw;" ></div>
+
+
+</app-permission>

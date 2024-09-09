@@ -1,0 +1,14 @@
+//Eliminar  node_modules
+npm install
+//Cache 
+npm cache clean --force
+
+
+npm install crypto-js
+npm install leaflet
+npm install @types/leaflet
+npm install @angular/router
+npm install @angular/forms
+npm install @angular/core @angular/platform-browser-dynamic @angular/platform-browser @angular/common @angular/compiler @angular/forms @angular/router --save
+npm install @angular/animations --save
+

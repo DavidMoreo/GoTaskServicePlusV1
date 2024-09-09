@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  text-shadow: 0px -1px 1px white;
+}
+
+
+
+.conatiner-speechText {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+
+@media (max-width: 600px) {
+  .conatiner-speechText {
+    display: flex;  
+    column-gap: 10px;
+  }
+}
+
+
+
+
+#container-text-to-speech {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top:25px;
+  padding: 20px;
+  padding-bottom:100px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px;
+}
+
+
+
+@media (max-width: 368px) {
+  #container-text-to-speech {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 98VW;
+  }
+}
+
+
+
+@media (max-width: 368px) {
+  .title {
+    font-size: 18px;
+  }
+}
+
+
+
+.coniner-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:end;
+}
+
+@media (max-width: 368px) {
+  .coniner-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+}
+
+
+
+.btn {
+  margin: 10px;
+  padding: 10px 15px;
+  font-size: 26px;
+  border-radius: 100%;
+  background-color: black;
+  color: white;
+  text-shadow: 0px -1px 8px gray;
+  box-shadow: 0px 0px 10px white inset;
+}
+
+@media (max-width: 368px) {
+  .btn {
+    font-size: 28px;
+  }
+}
+
+
+
+textarea {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+  resize: none;
+}
+
+
+.item-title {
+  width: 100%;
+  padding: 5px;
+  background-color: #ffb497;
+  border-radius:5px;
+  box-shadow:0px 0px 5px black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+}
+
+@media (max-width: 368px) {
+  .item-title {
+    width: 100%;
+    padding: 5px;
+    background-color: #ffb497;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px black;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
+    .item-title h4 {
+      text-align: center;
+      font-size: 14px;
+    }
+
+}
+
+
+  .item-title h4 {
+    color: black;
+    font-size: 12px;
+  }

@@ -1,0 +1,90 @@
+
+
+<div>
+  <div class="container-input">
+    <!--<p class="text-form">
+      {{languageTraslate("Pregunta")}}
+
+      <app-common-input-text [value]="data.question"
+                             [width]="'198px'"
+                             (EventChanged)="ChangedQuestion($event)"
+                             [isRequired]="true"
+                             [nameId]="'questionId'"
+                             textTransfor="'uppercase'"></app-common-input-text>
+    </p>
+    <p class="text-form">
+      {{languageTraslate("Nombre del producto")}}
+
+      <app-common-input-text [value]="data.question"
+                             [width]="'198px'"
+                             (EventChanged)="ChangedNameProduct($event)"
+                             [isRequired]="true"
+                             [nameId]="'questionId'"
+                             textTransfor="'uppercase'"></app-common-input-text>
+    </p>-->
+
+    <!--<p class="text-form">
+      {{languageTraslate("¿Es respuesta afirmativa?")}}
+      <app-common-btn-on-off (Changed)="ChangedChatAfirmative($event)"
+                             [Status]="false">
+      </app-common-btn-on-off>
+    </p>-->
+
+  </div>
+
+
+
+
+  <div class="btn-scroll">
+    @if(true){
+    <button (click)="SaveAndUpdate()"><i class="bi bi-floppy2-fill"></i></button>
+    }
+  </div>
+
+
+
+
+</div>
+
+
+<app-common-custom-grid columns="3">
+
+  <div class="div-header">
+    Pregunta
+  </div>
+  <div class="div-header">
+    Respuesa
+  </div>
+  <div class="div-header">
+    Modo
+  </div>
+
+
+  @for( item of  _chatBotByNameConfigService.GetAllByNameChat(); track item.id){
+
+  @if(_rowSeletion==item.id){
+  <div class="edit-visible">
+    <button (click)="Edit(item.id)"><i class="bi bi-pencil"></i></button>
+    <button (click)="Delete(item.id)"><i class="bi bi-trash3"></i></button>
+  </div>
+  }
+
+  <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+    {{item.question}}
+  </div>
+  <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+    {{item.answer}}
+  </div>
+  <div class="div-item" (click)="Selection(item.id)" [ngClass]="{'row-select':_rowSeletion==item.id}">
+    {{item.confirm}}
+  </div>
+
+  }
+
+
+
+</app-common-custom-grid>
+
+
+
+

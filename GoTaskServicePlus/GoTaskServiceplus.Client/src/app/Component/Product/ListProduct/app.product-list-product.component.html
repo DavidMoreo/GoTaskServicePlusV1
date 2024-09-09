@@ -1,0 +1,14 @@
+<div (click)="ScrollOff()" id="scroll-list-product" class="container-product scroll-container"  >
+
+  @for (item of _listProduct; track item.id) {
+  <app-item-product [isPhone]="false" [product]="item"   [distance]="GetDistanceProduct(item.adress)"  ></app-item-product>
+  }
+  <div class=" end container-item-product width">
+    <button (click)="searchProduct('select-product-search/all')">
+      ver todos <i class="bi bi-shop-window"></i>
+    </button>
+  </div>
+</div>
+<!--<app-common-loading [active]="GetListNull()"></app-common-loading>-->
+
+<app-alert-buy-product></app-alert-buy-product>
