@@ -5,7 +5,7 @@ import { GridComponent } from "../../Common/CustomControl/Grid/app.custom-contro
 import { MenuGridComponent } from "../../Common/MenuGrid/app.common-menu-grid";
 import { ConceptService } from "../../../Services/Product/Concept/ConceptService";
 import { ConfigService } from "../../../Services/Common/ConfigService";
-import { IAByNameProduct, IntentChat } from "../../../Models/Chat/ChatModel";
+import { IAAssistant, IAByNameProduct, IntentChat } from "../../../Models/Chat/ChatModel";
 import { SelectInputComponent } from "../../Common/CustomControl/ImputSelect/app.common-input-select";
 import { NameConcept } from "../../../Models/Structure/tblProduct";
 import { InputTextComponent } from "../../Common/CustomControl/ImputText/app.common-input-text";
@@ -33,7 +33,7 @@ export class ChatConfigByNameComponent implements OnInit {
  
   _chatBotByNameConfigService: ChatBotByNameConfigService;
   
-  data: IAByNameProduct = new IAByNameProduct();
+  data: IAAssistant = new IAAssistant();
 
   constructor(configservice: ConfigService, http: ConceptService, ChatBotService: ChatBotByNameConfigService) {
 
@@ -57,7 +57,7 @@ export class ChatConfigByNameComponent implements OnInit {
   }
   
   Edit(id: string) {
-    this._chatBotByNameConfigService.GetIntentByid(id).subscribe(
+    this._chatBotByNameConfigService.GetByNameById(id).subscribe(
       (e) => {       
         this.data = e.data;     
       }      
@@ -70,11 +70,11 @@ export class ChatConfigByNameComponent implements OnInit {
     this.ValidateConcept();
 
     if (this.data.id == "00000000-0000-0000-0000-000000000000") {
-      var response = this._chatBotByNameConfigService.SaveIntent(this.data);
+      var response = this._chatBotByNameConfigService.SaveByNameBot(this.data);
       return response;
     }
     else {
-      var response = this._chatBotByNameConfigService.UpdateIntent(this.data);
+      var response = this._chatBotByNameConfigService.UpdateByNameBot(this.data);
       return response;
     }
   }

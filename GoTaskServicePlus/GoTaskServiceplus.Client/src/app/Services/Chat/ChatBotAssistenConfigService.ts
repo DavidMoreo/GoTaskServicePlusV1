@@ -30,7 +30,7 @@ export class ChatBotAssistenConfigService {
 
   //By Name
 
-  GetAllIntent(page: number, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
+  GetAllAssisten(page: number, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
     var result = this._http.get<any>(this._host.GetHostApi() + `Chat/ConfigGetAllIntent?page=${page}`);
     result.subscribe((e) => {
       this.byName = e.data;
@@ -43,7 +43,7 @@ export class ChatBotAssistenConfigService {
     return result;
   }
 
-  GetIntentById(id: string, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
+  GetAssistenById(id: string, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
     const headers1 = new HttpHeaders({
       "Content-Type": "application/json"
     })
@@ -53,7 +53,7 @@ export class ChatBotAssistenConfigService {
     return result;
   }
 
-  DeleteIntentById(id: string, activeAlert: boolean = true): Observable<any> {
+  DeleteAssistenById(id: string, activeAlert: boolean = true): Observable<any> {
 
     var result = this._http.delete<any>(this._host.GetHostApi() + `Chat/ConfigIaIntentDelete?id=${id}`);
     result.subscribe((e) => {
@@ -67,7 +67,7 @@ export class ChatBotAssistenConfigService {
     return result;
   }
 
-  SaveIntentBot(intent: IntentChat,  activeAlert: boolean = true): Observable<any> {
+  SaveAssistenBot(intent: IntentChat,  activeAlert: boolean = true): Observable<any> {
     const headers1 = new HttpHeaders({
       "Content-Type": "application/json"
     })
@@ -86,7 +86,7 @@ export class ChatBotAssistenConfigService {
     return result;
   }
 
-  UpdateIntentBot(intent: IntentChat, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
+  UpdateAssistenBot(intent: IntentChat, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
     const headers1 = new HttpHeaders({
       "Content-Type": "application/json"
     })
@@ -115,28 +115,28 @@ export class ChatBotAssistenConfigService {
 
   //Util intents
 
-  AddintentChat(intentChat: IntentChat) {
+  AddAssistenChat(intentChat: IntentChat) {
     this.byName.push(intentChat);
   }
 
-  RemoveIntentChat(intentChat: IntentChat) {
+  RemoveAssistenChat(intentChat: IntentChat) {
     let temp = this.byName.find(s => s.id == intentChat.id);
     if (temp) {
       this.byName = this.byName.filter(s => s.id == intentChat.id);
     }
   }
 
-  GetAllIntentChat() {
+  GetAllAssistenChat() {
     let temp = this.byName;
     return temp;
   }
 
-  GetIntentChat(intentChat: IntentChat) {
+  GetAssistenChat(intentChat: IntentChat) {
     let temp = this.byName.find(s => s.id == intentChat.id);
     return temp;
   }
 
-  ClearIntent() {
+  ClearAssisten() {
     this.byName = Array();
 
   }
