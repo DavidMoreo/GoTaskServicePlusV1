@@ -11,4 +11,6 @@ npm install @angular/router
 npm install @angular/forms
 npm install @angular/core @angular/platform-browser-dynamic @angular/platform-browser @angular/common @angular/compiler @angular/forms @angular/router --save
 npm install @angular/animations --save
+npm install typescript@5.4.0 --save-dev
 
+npm install -g npm	
