@@ -30,7 +30,7 @@ export class ChatBotByNameConfigService {
 
   //By Name
 
-  GetAllIntent(page: number, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
+  GetAllByName(page: number, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
     var result = this._http.get<any>(this._host.GetHostApi() + `Chat/ConfigGetAllIntent?page=${page}`);
     result.subscribe((e) => {
       this.byName = e.data;
@@ -43,7 +43,7 @@ export class ChatBotByNameConfigService {
     return result;
   }
 
-  GetIntentById(id: string, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
+  GetByNameById(id: string, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
     const headers1 = new HttpHeaders({
       "Content-Type": "application/json"
     })
@@ -53,7 +53,7 @@ export class ChatBotByNameConfigService {
     return result;
   }
 
-  DeleteIntentById(id: string, activeAlert: boolean = true): Observable<any> {
+  DeleteByNameById(id: string, activeAlert: boolean = true): Observable<any> {
 
     var result = this._http.delete<any>(this._host.GetHostApi() + `Chat/ConfigIaIntentDelete?id=${id}`);
     result.subscribe((e) => {
@@ -67,7 +67,7 @@ export class ChatBotByNameConfigService {
     return result;
   }
 
-  SaveIntentBot(intent: IAAssistant,  activeAlert: boolean = true): Observable<any> {
+  SaveByNameBot(intent: IAAssistant,  activeAlert: boolean = true): Observable<any> {
     const headers1 = new HttpHeaders({
       "Content-Type": "application/json"
     })
@@ -86,7 +86,7 @@ export class ChatBotByNameConfigService {
     return result;
   }
 
-  UpdateIntentBot(intent: IAAssistant, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
+  UpdateByNameBot(intent: IAAssistant, activeConsole: boolean = false, activeAlert: boolean = true): Observable<any> {
     const headers1 = new HttpHeaders({
       "Content-Type": "application/json"
     })
@@ -112,28 +112,28 @@ export class ChatBotByNameConfigService {
   
   //Util byame
 
-  AddintentChat(intentChat: IAAssistant) {
+  AddByNameChat(intentChat: IAAssistant) {
     this.byName.push(intentChat);
   }
 
-  RemoveIntentChat(intentChat: IAAssistant) {
+  RemoveByNameChat(intentChat: IAAssistant) {
     let temp = this.byName.find(s => s.id == intentChat.id);
     if (temp) {
       this.byName = this.byName.filter(s => s.id == intentChat.id);
     }
   }
 
-  GetAllIntentChat() {
+  GetAllByNameChat() {
     let temp = this.byName;
     return temp;
   }
 
-  GetIntentChat(intentChat: IAAssistant) {
+  GetByNameChat(intentChat: IAAssistant) {
     let temp = this.byName.find(s => s.id == intentChat.id);
     return temp;
   }
 
-  ClearIntent() {
+  ClearByName() {
     this.byName = Array();
 
   }

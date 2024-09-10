@@ -5,12 +5,12 @@ import { GridComponent } from "../../Common/CustomControl/Grid/app.custom-contro
 import { MenuGridComponent } from "../../Common/MenuGrid/app.common-menu-grid";
 import { ConceptService } from "../../../Services/Product/Concept/ConceptService";
 import { ConfigService } from "../../../Services/Common/ConfigService";
-import { ChatBotByNameConfigService, ChatBotIntentConfigService } from "../../../Services/Chat/ChatBotConfigService";
 import { IAByNameProduct, IntentChat } from "../../../Models/Chat/ChatModel";
 import { SelectInputComponent } from "../../Common/CustomControl/ImputSelect/app.common-input-select";
 import { NameConcept } from "../../../Models/Structure/tblProduct";
 import { InputTextComponent } from "../../Common/CustomControl/ImputText/app.common-input-text";
 import { BtnOnOffComponent } from "../../Common/CustomControl/BtnOnOff/app.custom-control-btn-on-off";
+import { ChatBotByNameConfigService } from "../../../Services/Chat/ChatBotByNameConfigService";
 
 
 
@@ -49,11 +49,11 @@ export class ChatConfigByNameComponent implements OnInit {
 
   //Load
   GetAllIntent() {    
-    this._chatBotByNameConfigService.GetAllIntent(0);
+    this._chatBotByNameConfigService.GetAllByName(0);
   }
 
   Delete(id: string) {
-    this._chatBotByNameConfigService.DeleteIntentById(id);
+    this._chatBotByNameConfigService.DeleteByNameById(id);
   }
   
   Edit(id: string) {
