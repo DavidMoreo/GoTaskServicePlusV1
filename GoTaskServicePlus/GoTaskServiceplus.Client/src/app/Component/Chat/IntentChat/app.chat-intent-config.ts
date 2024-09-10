@@ -65,16 +65,18 @@ export class ChatIntentComponent implements OnInit {
 
 
 
-  SaveAndUpdate() {
+ async SaveAndUpdate() {
     this.ValidateConcept();
 
     if (this.intent.id == "00000000-0000-0000-0000-000000000000") {
-      var response = this._chatBotIntentConfigService.SaveIntentBot(this.intent,true);
-      return response;
+      var response = await this._chatBotIntentConfigService.SaveIntentBot(this.intent, true);
+      this.intent = new IntentChat();
+      return  response;
     }
     else {
-      var response = this._chatBotIntentConfigService.UpdateIntentBot(this.intent);
-      return response;
+      var response = await this._chatBotIntentConfigService.UpdateIntentBot(this.intent);
+      this.intent = new IntentChat();
+      return  response;
     }
   }
 
@@ -83,7 +85,6 @@ export class ChatIntentComponent implements OnInit {
   //Changed
 
   ChangedTypeIntent(value: string) {
-
     this.intent.intent = value;
   }
 
